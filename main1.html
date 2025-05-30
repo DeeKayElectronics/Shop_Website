@@ -15,104 +15,202 @@
       font-family: 'Roboto', sans-serif; /* Default font */
     }
     body {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* Dark gradient from index.html */
-      color: #e0e0e0; /* Lighter text color for dark background */
+      background-color: #f8f8f8; /* Light background */
+      color: #333; /* Darker text color */
       line-height: 1.6;
+      opacity: 0; /* Start hidden for fade-in animation */
+      animation: fadeInMain 0.8s ease-out forwards; /* Fade in animation */
+    }
+
+    /* Page entry animation */
+    @keyframes fadeInMain {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Header Styling */
     header {
-      background-color: #0d1a20; /* Darker shade for header */
-      color: #00ffff; /* Cyan color for text */
+      background-color: #ffffff; /* White background */
+      color: #007bff; /* Vibrant blue accent */
       padding: 30px 20px;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2); /* Subtle glow shadow */
-      border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft shadow */
+      border-bottom: 1px solid #e0e0e0;
     }
     header h1 {
       font-family: 'Orbitron', sans-serif; /* Sci-fi font for main heading */
       font-size: 3rem;
       margin-bottom: 10px;
-      text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* Text glow effect */
     }
     header p {
       font-size: 1.1rem;
-      color: #b3f0ff; /* Lighter cyan for tagline */
+      color: #555; /* Muted text for tagline */
     }
 
     /* Navigation Bar */
     nav {
-      background-color: #1a323e; /* Slightly lighter dark background for nav */
+      background-color: #ffffff; /* White background */
       padding: 15px 20px;
       text-align: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       position: sticky; /* Keeps nav visible on scroll */
       top: 0;
       z-index: 1000; /* Ensures nav is on top of other content */
     }
     nav a {
-      color: #00ffff; /* Cyan color for nav links */
+      color: #007bff; /* Vibrant blue for nav links */
       text-decoration: none;
       margin: 0 20px;
       font-weight: bold;
       font-size: 1.1rem;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-      position: relative; /* For underline effect */
-    }
-    nav a::after { /* Underline effect for nav links */
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      background: #fff;
-      left: 50%;
-      bottom: -5px;
-      transform: translateX(-50%);
-      transition: width 0.3s ease;
-    }
-    nav a:hover::after {
-      width: 100%;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+      padding-bottom: 5px;
     }
     nav a:hover {
-      color: #fff; /* White on hover */
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+      color: #0056b3; /* Darker blue on hover */
+      border-bottom: 2px solid #0056b3;
     }
 
-    /* Main Container & Sections */
+    /* Main Container */
     .container {
       padding: 40px 20px;
-      max-width: 960px; /* Slightly wider for content */
+      max-width: 1000px; /* Wider container */
       margin: 40px auto;
-      background: rgba(255, 255, 255, 0.05); /* Semi-transparent white background for sections */
-      border-radius: 15px; /* Rounded corners for the main container */
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.15); /* Subtle glow for container */
-      backdrop-filter: blur(5px); /* Slightly blur background behind container */
+      background: #ffffff; /* White background for main content area */
+      border-radius: 15px; /* Rounded corners */
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.08); /* Soft shadow for container */
     }
     .section {
       margin-bottom: 40px;
       padding: 30px;
-      background: rgba(255, 255, 255, 0.03); /* Very subtle background for each section */
       border-radius: 10px; /* Rounded corners for sections */
-      border: 1px solid rgba(0, 255, 255, 0.1); /* Subtle cyan border */
+      background-color: #fdfdfd; /* Slightly off-white for individual sections */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03); /* Very subtle shadow */
+      border: 1px solid #eee; /* Light border */
     }
     .section:last-child {
       margin-bottom: 0;
     }
     .section h2 {
       font-family: 'Orbitron', sans-serif;
-      color: #00ffff;
+      color: #007bff;
       font-size: 2.2rem;
-      border-bottom: 2px solid #00ffff;
+      border-bottom: 2px solid #007bff;
       padding-bottom: 10px;
       margin-bottom: 25px;
-      text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
     }
     .section p {
       margin-bottom: 15px;
       font-size: 1.05rem;
     }
     .section p strong {
-      color: #b3f0ff; /* Highlight strong text */
+      color: #007bff; /* Highlight strong text with accent color */
+    }
+
+    /* Quick Info Section (New!) */
+    #quick-info {
+      text-align: center;
+      background-color: #eef7ff; /* Light blue background */
+      padding: 40px;
+      margin-bottom: 40px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 123, 255, 0.1);
+      border: 1px solid #cce5ff;
+    }
+    #quick-info h2 {
+      font-size: 2.5rem;
+      color: #0056b3; /* Darker blue for heading */
+      margin-bottom: 25px;
+      border-bottom: none; /* No border for this H2 */
+    }
+    #quick-info .info-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    #quick-info .info-card {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+      flex: 1 1 calc(33% - 40px); /* Adjusts for 3 columns on larger screens */
+      min-width: 280px; /* Minimum width for cards */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    #quick-info .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    #quick-info .info-card i {
+      font-size: 2.5rem;
+      color: #007bff;
+      margin-bottom: 15px;
+    }
+    #quick-info .info-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    #quick-info .info-card p {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 15px;
+    }
+    #quick-info .info-card .btn {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    #quick-info .info-card .btn:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    /* Brands Section (New!) */
+    #brands {
+        text-align: center;
+        padding: 40px;
+        background-color: #f0f4f8; /* Light grey-blue background */
+        border-radius: 15px;
+        margin-bottom: 40px;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Inner shadow */
+    }
+    #brands h2 {
+        color: #0056b3; /* Darker blue heading */
+        margin-bottom: 30px;
+        font-size: 2.5rem;
+        border-bottom: 2px solid #0056b3;
+        display: inline-block; /* To make border-bottom fit content */
+        padding-bottom: 10px;
+    }
+    .brand-logos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid for logos */
+        gap: 30px;
+        justify-items: center; /* Center items in the grid cells */
+        align-items: center; /* Vertically align items in the grid cells */
+    }
+    .brand-logos img {
+        max-width: 100%;
+        height: auto;
+        filter: grayscale(80%); /* Mute colors for a cleaner look */
+        opacity: 0.7;
+        transition: filter 0.3s ease, opacity 0.3s ease;
+        max-height: 80px; /* Limit height of logos */
+    }
+    .brand-logos img:hover {
+        filter: grayscale(0%); /* Full color on hover */
+        opacity: 1;
     }
 
     /* Contact Section Specifics */
@@ -120,10 +218,12 @@
       display: flex;
       align-items: center;
       margin-bottom: 10px;
+      font-size: 1.05rem;
+      color: #555;
     }
     .contact-info p i {
       font-size: 1.2rem;
-      color: #00ffff; /* Cyan color for icons */
+      color: #007bff; /* Vibrant blue for icons */
       margin-right: 15px;
       width: 25px; /* Align icons */
       text-align: center;
@@ -131,17 +231,31 @@
 
     /* Footer Styling */
     footer {
-      background-color: #0d1a20; /* Darker shade for footer */
-      color: #888; /* Slightly muted text for footer */
+      background-color: #333; /* Dark footer */
+      color: #ccc; /* Lighter text for footer */
       text-align: center;
       padding: 25px;
       margin-top: 50px;
       font-size: 0.9rem;
-      border-top: 1px solid rgba(0, 255, 255, 0.1);
-      box-shadow: 0 -4px 15px rgba(0, 255, 255, 0.05);
+      border-top: 1px solid #444;
+      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+    }
+    footer a {
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    footer a:hover {
+        color: #fff;
     }
 
+
     /* Responsive Adjustments for Main Page */
+    @media (max-width: 992px) {
+        #quick-info .info-card {
+            flex: 1 1 calc(50% - 30px); /* 2 columns on tablets */
+        }
+    }
     @media (max-width: 768px) {
       header h1 {
         font-size: 2.5rem;
@@ -167,6 +281,16 @@
       .section p {
         font-size: 1rem;
       }
+       #quick-info h2, #brands h2 {
+          font-size: 2rem;
+      }
+      #quick-info .info-card {
+          flex: 1 1 100%; /* Single column on small mobiles */
+      }
+      .brand-logos {
+          grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+          gap: 20px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -177,7 +301,7 @@
         font-size: 0.9rem;
       }
       nav {
-        flex-direction: column; /* Stack nav links vertically on very small screens */
+        flex-direction: column; /* Stack nav links vertically */
         padding: 10px;
       }
       nav a {
@@ -192,6 +316,9 @@
       .section h2 {
         font-size: 1.5rem;
       }
+      #quick-info h2, #brands h2 {
+          font-size: 1.8rem;
+      }
     }
   </style>
 </head>
@@ -199,17 +326,55 @@
 
   <header>
     <h1>DEE KAY ELECTRONICS</h1>
-    <p>Your One-Stop Destination for Electronics in Jammu 🔌📱</p>
+    <p>Your Trusted Source for Quality Electronics & Home Appliances</p>
   </header>
 
   <nav>
+    <a href="#quick-info">Quick Info</a>
+    <a href="#brands">Brands</a>
     <a href="#about">About Us</a>
     <a href="#contact">Contact Us</a>
-    </nav>
+  </nav>
 
   <div class="container">
 
-    <section class="section" id="about">
+    <section id="quick-info" class="section">
+      <h2>Your Convenient Connection</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>Visit Our Store</h3>
+          <p>Near XYZ Chowk, Jammu, J&K - 180001</p>
+          <a href="https://www.google.com/maps/search/DEE+KAY+ELECTRONICS+Jammu" target="_blank" class="btn">Get Directions</a>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-phone"></i>
+          <h3>Call Us</h3>
+          <p>Have a question? We're here to help!</p>
+          <a href="tel:+919876543210" class="btn">+91-9876543210</a>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-envelope"></i>
+          <h3>Email Us</h3>
+          <p>Send us your queries anytime.</p>
+          <a href="mailto:deekayelectronics@gmail.com" class="btn">Send Email</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="brands" class="section">
+      <h2>Brands We proudly Sell</h2>
+      <div class="brand-logos">
+        <img src="https://via.placeholder.com/150x80/28a745/ffffff?text=Brand+A" alt="Brand A Logo">
+        <img src="https://via.placeholder.com/150x80/007bff/ffffff?text=Brand+B" alt="Brand B Logo">
+        <img src="https://via.placeholder.com/150x80/ffc107/333333?text=Brand+C" alt="Brand C Logo">
+        <img src="https://via.placeholder.com/150x80/dc3545/ffffff?text=Brand+D" alt="Brand D Logo">
+        <img src="https://via.placeholder.com/150x80/6f42c1/ffffff?text=Brand+E" alt="Brand E Logo">
+        <img src="https://via.placeholder.com/150x80/20c997/ffffff?text=Brand+F" alt="Brand F Logo">
+        </div>
+    </section>
+
+    <section id="about" class="section">
       <h2>About Us</h2>
       <p>
         Welcome to <strong>DEE KAY ELECTRONICS</strong>, your trusted shop for the latest and most reliable electronic appliances. Located in Jammu, we’ve been serving customers with dedication and quality for years.
@@ -219,12 +384,12 @@
       </p>
     </section>
 
-    <section class="section" id="contact">
+    <section id="contact" class="section">
       <h2>Contact Us</h2>
       <div class="contact-info">
         <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Near XYZ Chowk, Jammu, J&K - 180001</p>
-        <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +91-9876543210</p>
-        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> deekayelectronics@gmail.com</p>
+        <p><i class="fas fa-phone"></i> <strong>Phone:</strong> <a href="tel:+919876543210">+91-9876543210</a></p>
+        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:deekayelectronics@gmail.com">deekayelectronics@gmail.com</a></p>
         <p><i class="fas fa-clock"></i> <strong>Hours:</strong> Mon–Sat: 10 AM – 8 PM</p>
       </div>
     </section>
@@ -232,7 +397,7 @@
   </div>
 
   <footer>
-    &copy; 2025 DEE KAY ELECTRONICS. All rights reserved.
+    &copy; 2025 DEE KAY ELECTRONICS. All rights reserved. | Designed with ❤️ in Jammu
   </footer>
 
 </body>
