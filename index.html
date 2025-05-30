@@ -3,64 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome - DEE KAY ELECTRONICS</title>
+  <title>Welcome | DEE KAY ELECTRONICS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       height: 100vh;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      background-size: 600% 600%;
-      animation: bgAnimation 10s ease infinite;
       display: flex;
-      align-items: center;
       justify-content: center;
-      color: #00ffff;
-      font-family: 'Orbitron', sans-serif;
+      align-items: center;
+      color: white;
       overflow: hidden;
     }
 
-    h1 {
-      font-size: 3.5rem;
+    .welcome-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 50px;
       text-align: center;
-      animation: glow 1.5s ease-in-out infinite alternate;
-      letter-spacing: 2px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+      animation: fadeIn 2s ease-in;
     }
 
-    @keyframes glow {
+    .welcome-box h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      color: #00ffff;
+      margin-bottom: 20px;
+    }
+
+    .welcome-box p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+
+    .enter-btn {
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      background: #00ffff;
+      color: #000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+
+    .enter-btn:hover {
+      background: #fff;
+      color: #007a7a;
+      box-shadow: 0 0 20px #00ffff;
+    }
+
+    @keyframes fadeIn {
       from {
-        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+        opacity: 0;
+        transform: translateY(-30px);
       }
       to {
-        text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff;
+        opacity: 1;
+        transform: translateY(0);
       }
     }
-
-    @keyframes bgAnimation {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.4);
-    }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="overlay"></div>
-  <h1>⚡ Welcome to<br>DEE KAY ELECTRONICS ⚡</h1>
-
-  <script>
-    // Redirect to the main site after 3 seconds
-    setTimeout(() => {
-      window.location.href = "index.html";
-    }, 3000);
-  </script>
+  <div class="welcome-box">
+    <h1>Welcome to DEE KAY ELECTRONICS</h1>
+    <p>Your One-Stop Destination for the Latest Tech & Home Appliances in Jammu</p>
+    <button class="enter-btn" onclick="location.href='main.html'">Enter Store</button>
+  </div>
 </body>
 </html>
