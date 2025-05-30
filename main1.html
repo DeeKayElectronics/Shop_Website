@@ -116,14 +116,15 @@
       color: #007bff; /* Highlight strong text with accent color */
     }
 
-    /* Brands Section (New!) */
-    #brands {
+    /* Brands/Product Showcase Section (New!) */
+    #brands { /* Renamed for clarity, but still ID "brands" as requested for navigation */
         text-align: center;
         padding: 40px;
         background-color: #f0f4f8; /* Light grey-blue background */
         border-radius: 15px;
         margin-bottom: 40px;
         box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Inner shadow */
+        overflow: hidden; /* Crucial for clipping the slider */
     }
     #brands h2 {
         color: #0056b3; /* Darker blue heading */
@@ -133,24 +134,56 @@
         display: inline-block; /* To make border-bottom fit content */
         padding-bottom: 10px;
     }
-    .brand-logos {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid for logos */
-        gap: 30px;
-        justify-items: center; /* Center items in the grid cells */
-        align-items: center; /* Vertically align items in the grid cells */
+
+    .slider-container {
+        width: 100%;
+        overflow: hidden; /* Hide overflowing parts of the track */
+        position: relative;
+        padding: 20px 0; /* Vertical padding around slider */
     }
-    .brand-logos img {
+
+    .slider-track {
+        display: flex;
+        width: max-content; /* Allows all slides to be on one line */
+        animation: scrollProducts 30s linear infinite; /* Animation: speed, type, loop */
+        white-space: nowrap; /* Prevent slides from wrapping to next line */
+    }
+
+    .product-slide {
+        flex-shrink: 0; /* Prevent slides from shrinking */
+        width: 180px; /* Base width of each slide */
+        margin-right: 20px; /* Space between slides */
+        text-align: center;
+        background-color: #ffffff; /* Light background for individual slides */
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        padding: 15px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .product-slide:hover {
+        transform: translateY(-5px); /* Lift effect on hover */
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    .product-slide img {
         max-width: 100%;
-        height: auto;
-        filter: grayscale(80%); /* Mute colors for a cleaner look */
-        opacity: 0.7;
-        transition: filter 0.3s ease, opacity 0.3s ease;
-        max-height: 80px; /* Limit height of logos */
+        height: 120px; /* Fixed height for consistent image display */
+        object-fit: contain; /* Ensures image fits without cropping */
+        border-radius: 5px;
     }
-    .brand-logos img:hover {
-        filter: grayscale(0%); /* Full color on hover */
-        opacity: 1;
+
+    /* Keyframes for the continuous scroll animation */
+    /* Calculation: (width of one slide + margin-right) * number of unique slides */
+    /* (180px + 20px) * 6 unique slides = 1200px */
+    @keyframes scrollProducts {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-1200px); } /* Scrolls exactly one set of unique slides */
+    }
+
+    /* Pause animation on hover */
+    .slider-container:hover .slider-track {
+        animation-play-state: paused;
     }
 
     /* Quick Info Section */
@@ -280,9 +313,18 @@
       #quick-info .info-card {
           flex: 1 1 100%; /* Single column on small mobiles */
       }
-      .brand-logos {
-          grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-          gap: 20px;
+      /* Responsive adjustments for the slider */
+      .product-slide {
+          width: 150px; /* Smaller width on tablets */
+          margin-right: 15px;
+      }
+      .product-slide img {
+          height: 100px;
+      }
+      /* Recalculate keyframe for smaller width */
+      @keyframes scrollProducts {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-165px * 6)); } /* (150px + 15px) * 6 unique slides */
       }
     }
 
@@ -312,6 +354,19 @@
       #quick-info h2, #brands h2 {
           font-size: 1.8rem;
       }
+      /* Responsive adjustments for the slider */
+      .product-slide {
+          width: 120px; /* Even smaller on mobiles */
+          margin-right: 10px;
+      }
+      .product-slide img {
+          height: 80px;
+      }
+      /* Recalculate keyframe for even smaller width */
+      @keyframes scrollProducts {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-130px * 6)); } /* (120px + 10px) * 6 unique slides */
+      }
     }
   </style>
 </head>
@@ -323,23 +378,30 @@
   </header>
 
   <nav>
-    <a href="#brands">Brands</a>
-    <a href="#quick-info">Quick Info</a>
+    <a href="#brands">Products</a> <a href="#quick-info">Quick Info</a>
     <a href="#about">About Us</a>
-    </nav>
+  </nav>
 
   <div class="container">
 
     <section id="brands" class="section">
-      <h2>Top Brands We Sell</h2>
-      <div class="brand-logos">
-        <img src="https://via.placeholder.com/150x80/28a745/ffffff?text=Brand+A" alt="Brand A Logo">
-        <img src="https://via.placeholder.com/150x80/007bff/ffffff?text=Brand+B" alt="Brand B Logo">
-        <img src="https://via.placeholder.com/150x80/ffc107/333333?text=Brand+C" alt="Brand C Logo">
-        <img src="https://via.placeholder.com/150x80/dc3545/ffffff?text=Brand+D" alt="Brand D Logo">
-        <img src="https://via.placeholder.com/150x80/6f42c1/ffffff?text=Brand+E" alt="Brand E Logo">
-        <img src="https://via.placeholder.com/150x80/20c997/ffffff?text=Brand+F" alt="Brand F Logo">
-        </div>
+      <h2>Product Showcase</h2> <div class="slider-container">
+          <div class="slider-track">
+              <div class="product-slide"><img src="https://via.placeholder.com/200x150/007bff/ffffff?text=Smart+TV" alt="Smart TV"></div>
+              <div class="product-slide"><img src="https://via.placeholder.com/200x150/28a745/ffffff?text=Washing+Machine" alt="Washing Machine"></div>
+              <div class="product-slide"><img src="https://via.placeholder.com/200x150/ffc107/333333?text=Refrigerator" alt="Refrigerator"></div>
+              <div class="product-slide"><img src="https://via.placeholder.com/200x150/dc3545/ffffff?text=Smartphone" alt="Smartphone"></div>
+              <div class="product-slide"><img src="https://via.placeholder.com/200x150/6f42c1/ffffff?text=Laptop" alt="Laptop"></div>
+              <div class="product-slide"><img src="https://via.placeholder.com/200x150/17a2b8/ffffff?text=Air+Conditioner" alt="Air Conditioner"></div>
+
+              <div class="product-slide"><img src="https://via.placeholder.com/200x150/007bff/ffffff?text=Smart+TV" alt="Smart TV"></div>
+              <div class="product-slide"><img src="https://via.placeholder.com/200x150/28a745/ffffff?text=Washing+Machine" alt="Washing Machine"></div>
+              <div class="product-slide"><img src="https://via.placeholder.com/200x150/ffc107/333333?text=Refrigerator" alt="Refrigerator"></div>
+              <div class="product-slide"><img src="https://via.placeholder.com/200x150/dc3545/ffffff?text=Smartphone" alt="Smartphone"></div>
+              <div class="product-slide"><img src="https://via.placeholder.com/200x150/6f42c1/ffffff?text=Laptop" alt="Laptop"></div>
+              <div class="product-slide"><img src="https://via.placeholder.com/200x150/17a2b8/ffffff?text=Air+Conditioner" alt="Air Conditioner"></div>
+          </div>
+      </div>
     </section>
 
     <section id="quick-info" class="section">
@@ -376,7 +438,7 @@
       </p>
     </section>
 
-    </div>
+  </div>
 
   <footer>
     © 2025 DEE KAY ELECTRONICS. All rights reserved. | Designed with ❤️ in Jammu
