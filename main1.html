@@ -4,48 +4,194 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DEE KAY ELECTRONICS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    body {
+    /* Global Styles & Body */
+    * {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f4f4;
-      color: #222;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif; /* Default font */
     }
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* Dark gradient from index.html */
+      color: #e0e0e0; /* Lighter text color for dark background */
+      line-height: 1.6;
+    }
+
+    /* Header Styling */
     header {
-      background-color: #00aaff;
-      color: white;
-      padding: 20px;
+      background-color: #0d1a20; /* Darker shade for header */
+      color: #00ffff; /* Cyan color for text */
+      padding: 30px 20px;
       text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2); /* Subtle glow shadow */
+      border-bottom: 1px solid rgba(0, 255, 255, 0.3);
     }
+    header h1 {
+      font-family: 'Orbitron', sans-serif; /* Sci-fi font for main heading */
+      font-size: 3rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* Text glow effect */
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #b3f0ff; /* Lighter cyan for tagline */
+    }
+
+    /* Navigation Bar */
     nav {
-      background-color: #0077aa;
-      padding: 10px;
+      background-color: #1a323e; /* Slightly lighter dark background for nav */
+      padding: 15px 20px;
       text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      position: sticky; /* Keeps nav visible on scroll */
+      top: 0;
+      z-index: 1000; /* Ensures nav is on top of other content */
     }
     nav a {
-      color: white;
+      color: #00ffff; /* Cyan color for nav links */
       text-decoration: none;
-      margin: 0 15px;
+      margin: 0 20px;
       font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+      position: relative; /* For underline effect */
     }
+    nav a::after { /* Underline effect for nav links */
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: #fff;
+      left: 50%;
+      bottom: -5px;
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    nav a:hover {
+      color: #fff; /* White on hover */
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Main Container & Sections */
     .container {
-      padding: 30px;
-      max-width: 1000px;
-      margin: auto;
+      padding: 40px 20px;
+      max-width: 960px; /* Slightly wider for content */
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.05); /* Semi-transparent white background for sections */
+      border-radius: 15px; /* Rounded corners for the main container */
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.15); /* Subtle glow for container */
+      backdrop-filter: blur(5px); /* Slightly blur background behind container */
     }
     .section {
       margin-bottom: 40px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.03); /* Very subtle background for each section */
+      border-radius: 10px; /* Rounded corners for sections */
+      border: 1px solid rgba(0, 255, 255, 0.1); /* Subtle cyan border */
+    }
+    .section:last-child {
+      margin-bottom: 0;
     }
     .section h2 {
-      color: #0077aa;
-      border-bottom: 2px solid #0077aa;
-      padding-bottom: 5px;
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffff;
+      font-size: 2.2rem;
+      border-bottom: 2px solid #00ffff;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
     }
-    footer {
-      background-color: #222;
-      color: #ccc;
+    .section p {
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+    }
+    .section p strong {
+      color: #b3f0ff; /* Highlight strong text */
+    }
+
+    /* Contact Section Specifics */
+    .contact-info p {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .contact-info p i {
+      font-size: 1.2rem;
+      color: #00ffff; /* Cyan color for icons */
+      margin-right: 15px;
+      width: 25px; /* Align icons */
       text-align: center;
-      padding: 15px;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: #0d1a20; /* Darker shade for footer */
+      color: #888; /* Slightly muted text for footer */
+      text-align: center;
+      padding: 25px;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(0, 255, 255, 0.1);
+      box-shadow: 0 -4px 15px rgba(0, 255, 255, 0.05);
+    }
+
+    /* Responsive Adjustments for Main Page */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      nav a {
+        margin: 0 10px;
+        font-size: 1rem;
+      }
+      .container {
+        margin: 30px 15px;
+        padding: 30px 15px;
+      }
+      .section {
+        padding: 20px;
+      }
+      .section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+      .section p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 0.9rem;
+      }
+      nav {
+        flex-direction: column; /* Stack nav links vertically on very small screens */
+        padding: 10px;
+      }
+      nav a {
+        display: block;
+        margin: 5px 0;
+      }
+      .container {
+        margin: 20px 10px;
+        padding: 20px 10px;
+        border-radius: 10px;
+      }
+      .section h2 {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -57,9 +203,9 @@
   </header>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact Us</a>
+    </nav>
 
   <div class="container">
 
@@ -75,10 +221,12 @@
 
     <section class="section" id="contact">
       <h2>Contact Us</h2>
-      <p><strong>Address:</strong> Near XYZ Chowk, Jammu, J&K - 180001</p>
-      <p><strong>Phone:</strong> +91-9876543210</p>
-      <p><strong>Email:</strong> deekayelectronics@gmail.com</p>
-      <p><strong>Hours:</strong> Mon–Sat: 10 AM – 8 PM</p>
+      <div class="contact-info">
+        <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Near XYZ Chowk, Jammu, J&K - 180001</p>
+        <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +91-9876543210</p>
+        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> deekayelectronics@gmail.com</p>
+        <p><i class="fas fa-clock"></i> <strong>Hours:</strong> Mon–Sat: 10 AM – 8 PM</p>
+      </div>
     </section>
 
   </div>
