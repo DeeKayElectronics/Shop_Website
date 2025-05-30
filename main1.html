@@ -31,7 +31,6 @@
     /* Header Styling */
     header {
       background-color: #ffffff; /* White background */
-      color: #007bff; /* Vibrant blue accent */
       padding: 30px 20px;
       text-align: center;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft shadow */
@@ -39,9 +38,19 @@
     }
     header h1 {
       font-family: 'Orbitron', sans-serif; /* Sci-fi font for main heading */
-      font-size: 3rem;
+      font-size: 3.5rem; /* Larger font size */
       margin-bottom: 10px;
+      color: #007bff; /* Vibrant blue accent */
+      text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.3), -2px -2px 5px rgba(0, 123, 255, 0.1); /* Subtle 3D-like glow */
+      letter-spacing: 2px; /* Add some spacing */
+      animation: pulsateTitle 2s infinite alternate ease-in-out; /* Pulsating glow */
     }
+
+    @keyframes pulsateTitle {
+      0% { text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.3), -2px -2px 5px rgba(0, 123, 255, 0.1); }
+      100% { text-shadow: 2px 2px 8px rgba(0, 123, 255, 0.6), -2px -2px 8px rgba(0, 123, 255, 0.3); }
+    }
+
     header p {
       font-size: 1.1rem;
       color: #555; /* Muted text for tagline */
@@ -107,7 +116,44 @@
       color: #007bff; /* Highlight strong text with accent color */
     }
 
-    /* Quick Info Section (New!) */
+    /* Brands Section (New!) */
+    #brands {
+        text-align: center;
+        padding: 40px;
+        background-color: #f0f4f8; /* Light grey-blue background */
+        border-radius: 15px;
+        margin-bottom: 40px;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Inner shadow */
+    }
+    #brands h2 {
+        color: #0056b3; /* Darker blue heading */
+        margin-bottom: 30px;
+        font-size: 2.5rem;
+        border-bottom: 2px solid #0056b3;
+        display: inline-block; /* To make border-bottom fit content */
+        padding-bottom: 10px;
+    }
+    .brand-logos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid for logos */
+        gap: 30px;
+        justify-items: center; /* Center items in the grid cells */
+        align-items: center; /* Vertically align items in the grid cells */
+    }
+    .brand-logos img {
+        max-width: 100%;
+        height: auto;
+        filter: grayscale(80%); /* Mute colors for a cleaner look */
+        opacity: 0.7;
+        transition: filter 0.3s ease, opacity 0.3s ease;
+        max-height: 80px; /* Limit height of logos */
+    }
+    .brand-logos img:hover {
+        filter: grayscale(0%); /* Full color on hover */
+        opacity: 1;
+    }
+
+    /* Quick Info Section */
     #quick-info {
       text-align: center;
       background-color: #eef7ff; /* Light blue background */
@@ -174,59 +220,6 @@
     #quick-info .info-card .btn:hover {
       background-color: #0056b3;
       transform: translateY(-2px);
-    }
-
-    /* Brands Section (New!) */
-    #brands {
-        text-align: center;
-        padding: 40px;
-        background-color: #f0f4f8; /* Light grey-blue background */
-        border-radius: 15px;
-        margin-bottom: 40px;
-        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Inner shadow */
-    }
-    #brands h2 {
-        color: #0056b3; /* Darker blue heading */
-        margin-bottom: 30px;
-        font-size: 2.5rem;
-        border-bottom: 2px solid #0056b3;
-        display: inline-block; /* To make border-bottom fit content */
-        padding-bottom: 10px;
-    }
-    .brand-logos {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid for logos */
-        gap: 30px;
-        justify-items: center; /* Center items in the grid cells */
-        align-items: center; /* Vertically align items in the grid cells */
-    }
-    .brand-logos img {
-        max-width: 100%;
-        height: auto;
-        filter: grayscale(80%); /* Mute colors for a cleaner look */
-        opacity: 0.7;
-        transition: filter 0.3s ease, opacity 0.3s ease;
-        max-height: 80px; /* Limit height of logos */
-    }
-    .brand-logos img:hover {
-        filter: grayscale(0%); /* Full color on hover */
-        opacity: 1;
-    }
-
-    /* Contact Section Specifics */
-    .contact-info p {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-      font-size: 1.05rem;
-      color: #555;
-    }
-    .contact-info p i {
-      font-size: 1.2rem;
-      color: #007bff; /* Vibrant blue for icons */
-      margin-right: 15px;
-      width: 25px; /* Align icons */
-      text-align: center;
     }
 
     /* Footer Styling */
@@ -330,13 +323,24 @@
   </header>
 
   <nav>
-    <a href="#quick-info">Quick Info</a>
     <a href="#brands">Brands</a>
+    <a href="#quick-info">Quick Info</a>
     <a href="#about">About Us</a>
-    <a href="#contact">Contact Us</a>
-  </nav>
+    </nav>
 
   <div class="container">
+
+    <section id="brands" class="section">
+      <h2>Top Brands We Sell</h2>
+      <div class="brand-logos">
+        <img src="https://via.placeholder.com/150x80/28a745/ffffff?text=Brand+A" alt="Brand A Logo">
+        <img src="https://via.placeholder.com/150x80/007bff/ffffff?text=Brand+B" alt="Brand B Logo">
+        <img src="https://via.placeholder.com/150x80/ffc107/333333?text=Brand+C" alt="Brand C Logo">
+        <img src="https://via.placeholder.com/150x80/dc3545/ffffff?text=Brand+D" alt="Brand D Logo">
+        <img src="https://via.placeholder.com/150x80/6f42c1/ffffff?text=Brand+E" alt="Brand E Logo">
+        <img src="https://via.placeholder.com/150x80/20c997/ffffff?text=Brand+F" alt="Brand F Logo">
+        </div>
+    </section>
 
     <section id="quick-info" class="section">
       <h2>Your Convenient Connection</h2>
@@ -351,50 +355,28 @@
           <i class="fas fa-phone"></i>
           <h3>Call Us</h3>
           <p>Have a question? We're here to help!</p>
-          <a href="tel:+919906320240" class="btn">9906320240</a>
+          <a href="tel:+919906320240" class="btn">Give Us a Call</a>
         </div>
         <div class="info-card">
           <i class="fas fa-envelope"></i>
           <h3>Email Us</h3>
           <p>Send us your queries anytime.</p>
-          <a href="mailto:daleepbamotra74138@gmail.com" class="btn">daleepbamotra74138@gmail.com</a>
+          <a href="mailto:daleepbamotra74138@gmail.com" class="btn">Send Email</a>
         </div>
       </div>
-    </section>
-
-    <section id="brands" class="section">
-      <h2>Brands We proudly Sell</h2>
-      <div class="brand-logos">
-        <img src="https://via.placeholder.com/150x80/28a745/ffffff?text=Brand+A" alt="Brand A Logo">
-        <img src="https://via.placeholder.com/150x80/007bff/ffffff?text=Brand+B" alt="Brand B Logo">
-        <img src="https://via.placeholder.com/150x80/ffc107/333333?text=Brand+C" alt="Brand C Logo">
-        <img src="https://via.placeholder.com/150x80/dc3545/ffffff?text=Brand+D" alt="Brand D Logo">
-        <img src="https://via.placeholder.com/150x80/6f42c1/ffffff?text=Brand+E" alt="Brand E Logo">
-        <img src="https://via.placeholder.com/150x80/20c997/ffffff?text=Brand+F" alt="Brand F Logo">
-        </div>
     </section>
 
     <section id="about" class="section">
       <h2>About Us</h2>
       <p>
-        Welcome to <strong>DEE KAY ELECTRONICS</strong>, your trusted shop for the latest and most reliable electronic appliances. Located in Jammu, we’ve been serving customers with dedication and quality for years.
+        Welcome to **DEE KAY ELECTRONICS**, your trusted shop for the latest and most reliable electronic appliances. Located in Jammu, we’ve been serving customers with dedication and quality for years.
       </p>
       <p>
         From TVs to refrigerators, we deal with all major brands and ensure the best value for your money. Stay tuned — our product catalog is coming soon!
       </p>
     </section>
 
-    <section id="contact" class="section">
-      <h2>Contact Us</h2>
-      <div class="contact-info">
-        <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Main road, Puran Nagar, NEWPLOT, Jammu, Jammu and Kashmir</p>
-        <p><i class="fas fa-phone"></i> <strong>Phone:</strong> <a href="tel:+919906320240">+91-9906320240</a></p>
-        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:daleepbamotra74138@gmail.com">daleepbamotra74138@gmail.com</a></p>
-        <p><i class="fas fa-clock"></i> <strong>Hours:</strong> 10 AM – 9 PM</p>
-      </div>
-    </section>
-
-  </div>
+    </div>
 
   <footer>
     © 2025 DEE KAY ELECTRONICS. All rights reserved. | Designed with ❤️ in Jammu
