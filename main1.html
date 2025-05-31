@@ -14,6 +14,19 @@
             box-sizing: border-box;
             font-family: 'Roboto', sans-serif; /* Default font */
         }
+
+        /* --- CRITICAL FIX START --- */
+        /* Ensure html and body don't interfere with fixed positioning */
+        html, body {
+            height: 100%; /* Ensure body takes full viewport height */
+            /* Remove any potentially interfering transforms, filters, etc. if they were applied globally */
+            transform: none !important; /* Forces no transform context */
+            filter: none !important; /* Forces no filter context */
+            perspective: none !important; /* Forces no perspective context */
+            overflow-x: hidden; /* Prevent horizontal scrollbar if any elements go off-screen */
+        }
+        /* --- CRITICAL FIX END --- */
+
         body {
             background-color: #f8f8f8; /* Light background */
             color: #333; /* Darker text color */
@@ -277,17 +290,22 @@
 
 
         /* Fixed WhatsApp and Call Buttons */
-        .fixed-buttons {
-            position: fixed; /* Crucial: stays in the viewport */
+        .fixed-buttons-container { /* New container for extra isolation */
+            position: fixed; /* CRUCIAL: Stays in the viewport */
             bottom: 30px;    /* 30px from the bottom of the visible screen */
             right: 30px;     /* 30px from the right of the visible screen */
             z-index: 1000;   /* Ensures they are above other content */
             display: flex;
             flex-direction: column; /* Stacks buttons vertically */
             gap: 15px;       /* Space between buttons */
+            /* Add some defensive styles to prevent parent interference */
+            transform: none !important;
+            filter: none !important;
+            perspective: none !important;
+            contain: unset !important;
         }
 
-        .fixed-buttons a {
+        .fixed-buttons-container a {
             display: flex;           /* Use flexbox for centering */
             justify-content: center; /* Horizontally center content (the icon) */
             align-items: center;     /* Vertically center content (the icon) */
@@ -301,7 +319,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .fixed-buttons a:hover {
+        .fixed-buttons-container a:hover {
             transform: scale(1.1); /* Slightly enlarge on hover */
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
@@ -367,12 +385,12 @@
             }
 
             /* Media Queries for Fixed Buttons (adjust their position on smaller screens) */
-            .fixed-buttons {
+            .fixed-buttons-container {
                 bottom: 20px; /* Adjusted for smaller screens */
                 right: 20px;
                 gap: 10px;
             }
-            .fixed-buttons a {
+            .fixed-buttons-container a {
                 width: 50px;
                 height: 50px;
                 font-size: 24px;
@@ -419,11 +437,11 @@
                 100% { transform: translateX(calc(-130px * 6)); } /* (120px + 10px) * 6 unique slides */
             }
 
-            .fixed-buttons {
+            .fixed-buttons-container {
                 bottom: 15px; /* Adjusted for smaller screens */
                 right: 15px;
             }
-            .fixed-buttons a {
+            .fixed-buttons-container a {
                 width: 45px;
                 height: 45px;
                 font-size: 22px;
@@ -507,7 +525,7 @@
         © 2025 DEE KAY ELECTRONICS. All rights reserved. | Designed with ❤️ in Jammu
     </footer>
 
-    <div class="fixed-buttons">
+    <div class="fixed-buttons-container">
         <a href="https://wa.me/919906320240" class="whatsapp-btn" target="_blank" aria-label="Chat on WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
@@ -515,6 +533,5 @@
             <i class="fas fa-phone"></i>
         </a>
     </div>
-
-</body>
+    </body>
 </html>
