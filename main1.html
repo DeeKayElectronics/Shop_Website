@@ -276,26 +276,26 @@
         }
 
 
-        /* Fixed WhatsApp and Call Buttons */
+        /* Fixed WhatsApp and Call Buttons - REVISED */
         .fixed-buttons {
-            position: fixed;
-            bottom: 30px; /* Adjust as needed */
-            right: 30px; /* Adjust as needed */
-            z-index: 1000; /* Ensure they are above other content */
+            position: fixed; /* This makes them stay in place relative to the viewport */
+            bottom: 30px;    /* 30px from the bottom */
+            right: 30px;     /* 30px from the right */
+            z-index: 1000;   /* Ensures they are above other content */
             display: flex;
-            flex-direction: column; /* Stack buttons vertically */
-            gap: 15px; /* Space between buttons */
+            flex-direction: column; /* Stacks buttons vertically */
+            gap: 15px;       /* Space between buttons */
         }
 
         .fixed-buttons a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 60px; /* Size of the button */
-            height: 60px; /* Size of the button */
-            border-radius: 50%; /* Make them circular */
+            display: flex;           /* Use flexbox for centering */
+            justify-content: center; /* Horizontally center content (the icon) */
+            align-items: center;     /* Vertically center content (the icon) */
+            width: 60px;             /* Size of the button */
+            height: 60px;            /* Size of the button */
+            border-radius: 50%;      /* Make them circular */
             color: white;
-            font-size: 28px; /* Icon size */
+            font-size: 28px;         /* Icon size */
             text-decoration: none;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -477,8 +477,7 @@
                     <a href="https://maps.app.goo.gl/UzZY1dRvox7F6huR8" target="_blank" class="btn">Get Directions</a>
                 </div>
                 <div class="info-card">
-                    <i class="fas fa-phone"></i>
-                    <h3>Call Us</h3>
+                    <i class="fas fa-phone"></i> <h3>Call Us</h3>
                     <p>Have a question? We're here to help!</p>
                     <a href="tel:+919906320240" class="btn">Give Us a Call</a>
                 </div>
@@ -512,8 +511,7 @@
             <i class="fab fa-whatsapp"></i>
         </a>
         <a href="tel:+919906320240" class="call-btn" aria-label="Call Us">
-            <i class="fas fa-phone-alt"></i>
-        </a>
+            <i class="fas fa-phone"></i> </a>
     </div>
 
 </body>
