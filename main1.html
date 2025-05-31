@@ -276,11 +276,11 @@
         }
 
 
-        /* Fixed WhatsApp and Call Buttons - REVISED */
+        /* Fixed WhatsApp and Call Buttons - REVISED AGAIN */
         .fixed-buttons {
             position: fixed; /* This makes them stay in place relative to the viewport */
-            bottom: 30px;    /* 30px from the bottom */
-            right: 30px;     /* 30px from the right */
+            bottom: 100px;   /* <--- INCREASED THIS VALUE (e.g., to 100px or 150px) */
+            right: 30px;     /* Stays 30px from the right edge */
             z-index: 1000;   /* Ensures they are above other content */
             display: flex;
             flex-direction: column; /* Stacks buttons vertically */
@@ -368,7 +368,7 @@
 
             /* Media Queries for Fixed Buttons (adjust their position on smaller screens) */
             .fixed-buttons {
-                bottom: 20px;
+                bottom: 80px; /* Adjusted for smaller screens */
                 right: 20px;
                 gap: 10px;
             }
@@ -420,7 +420,7 @@
             }
 
             .fixed-buttons {
-                bottom: 15px;
+                bottom: 60px; /* Adjusted for smaller screens */
                 right: 15px;
             }
             .fixed-buttons a {
@@ -477,7 +477,8 @@
                     <a href="https://maps.app.goo.gl/UzZY1dRvox7F6huR8" target="_blank" class="btn">Get Directions</a>
                 </div>
                 <div class="info-card">
-                    <i class="fas fa-phone"></i> <h3>Call Us</h3>
+                    <i class="fas fa-phone"></i>
+                    <h3>Call Us</h3>
                     <p>Have a question? We're here to help!</p>
                     <a href="tel:+919906320240" class="btn">Give Us a Call</a>
                 </div>
@@ -511,7 +512,8 @@
             <i class="fab fa-whatsapp"></i>
         </a>
         <a href="tel:+919906320240" class="call-btn" aria-label="Call Us">
-            <i class="fas fa-phone"></i> </a>
+            <i class="fas fa-phone"></i>
+        </a>
     </div>
 
 </body>
