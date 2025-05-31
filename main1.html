@@ -276,11 +276,11 @@
         }
 
 
-        /* Fixed WhatsApp and Call Buttons - REVISED AGAIN */
+        /* Fixed WhatsApp and Call Buttons */
         .fixed-buttons {
-            position: fixed; /* This makes them stay in place relative to the viewport */
-            bottom: 100px;   /* <--- INCREASED THIS VALUE (e.g., to 100px or 150px) */
-            right: 30px;     /* Stays 30px from the right edge */
+            position: fixed; /* Crucial: stays in the viewport */
+            bottom: 30px;    /* 30px from the bottom of the visible screen */
+            right: 30px;     /* 30px from the right of the visible screen */
             z-index: 1000;   /* Ensures they are above other content */
             display: flex;
             flex-direction: column; /* Stacks buttons vertically */
@@ -368,7 +368,7 @@
 
             /* Media Queries for Fixed Buttons (adjust their position on smaller screens) */
             .fixed-buttons {
-                bottom: 80px; /* Adjusted for smaller screens */
+                bottom: 20px; /* Adjusted for smaller screens */
                 right: 20px;
                 gap: 10px;
             }
@@ -420,7 +420,7 @@
             }
 
             .fixed-buttons {
-                bottom: 60px; /* Adjusted for smaller screens */
+                bottom: 15px; /* Adjusted for smaller screens */
                 right: 15px;
             }
             .fixed-buttons a {
