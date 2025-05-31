@@ -1,448 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DEE KAY ELECTRONICS</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    /* Global Styles & Body */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Roboto', sans-serif; /* Default font */
-    }
-    body {
-      background-color: #f8f8f8; /* Light background */
-      color: #333; /* Darker text color */
-      line-height: 1.6;
-      opacity: 0; /* Start hidden for fade-in animation */
-      animation: fadeInMain 0.8s ease-out forwards; /* Fade in animation */
-    }
-
-    /* Page entry animation */
-    @keyframes fadeInMain {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Header Styling */
-    header {
-      background-color: #ffffff; /* White background */
-      padding: 30px 20px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft shadow */
-      border-bottom: 1px solid #e0e0e0;
-    }
-    header h1 {
-      font-family: 'Orbitron', sans-serif; /* Sci-fi font for main heading */
-      font-size: 3.5rem; /* Larger font size */
-      margin-bottom: 10px;
-      color: #007bff; /* Vibrant blue accent */
-      text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.3), -2px -2px 5px rgba(0, 123, 255, 0.1); /* Subtle 3D-like glow */
-      letter-spacing: 2px; /* Add some spacing */
-      animation: pulsateTitle 2s infinite alternate ease-in-out; /* Pulsating glow */
-    }
-
-    @keyframes pulsateTitle {
-      0% { text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.3), -2px -2px 5px rgba(0, 123, 255, 0.1); }
-      100% { text-shadow: 2px 2px 8px rgba(0, 123, 255, 0.6), -2px -2px 8px rgba(0, 123, 255, 0.3); }
-    }
-
-    header p {
-      font-size: 1.1rem;
-      color: #555; /* Muted text for tagline */
-    }
-
-    /* Navigation Bar */
-    nav {
-      background-color: #ffffff; /* White background */
-      padding: 15px 20px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      position: sticky; /* Keeps nav visible on scroll */
-      top: 0;
-      z-index: 1000; /* Ensures nav is on top of other content */
-    }
-    nav a {
-      color: #007bff; /* Vibrant blue for nav links */
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: bold;
-      font-size: 1.1rem;
-      transition: color 0.3s ease, border-bottom 0.3s ease;
-      padding-bottom: 5px;
-    }
-    nav a:hover {
-      color: #0056b3; /* Darker blue on hover */
-      border-bottom: 2px solid #0056b3;
-    }
-
-    /* Main Container */
-    .container {
-      padding: 40px 20px;
-      max-width: 1000px; /* Wider container */
-      margin: 40px auto;
-      background: #ffffff; /* White background for main content area */
-      border-radius: 15px; /* Rounded corners */
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.08); /* Soft shadow for container */
-    }
-    .section {
-      margin-bottom: 40px;
-      padding: 30px;
-      border-radius: 10px; /* Rounded corners for sections */
-      background-color: #fdfdfd; /* Slightly off-white for individual sections */
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03); /* Very subtle shadow */
-      border: 1px solid #eee; /* Light border */
-    }
-    .section:last-child {
-      margin-bottom: 0;
-    }
-    .section h2 {
-      font-family: 'Orbitron', sans-serif;
-      color: #007bff;
-      font-size: 2.2rem;
-      border-bottom: 2px solid #007bff;
-      padding-bottom: 10px;
-      margin-bottom: 25px;
-    }
-    .section p {
-      margin-bottom: 15px;
-      font-size: 1.05rem;
-    }
-    .section p strong {
-      color: #007bff; /* Highlight strong text with accent color */
-    }
-
-    /* Brands/Product Showcase Section (New!) */
-    #brands { /* Renamed for clarity, but still ID "brands" as requested for navigation */
-        text-align: center;
-        padding: 40px;
-        background-color: #f0f4f8; /* Light grey-blue background */
-        border-radius: 15px;
-        margin-bottom: 40px;
-        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Inner shadow */
-        overflow: hidden; /* Crucial for clipping the slider */
-    }
-    #brands h2 {
-        color: #0056b3; /* Darker blue heading */
-        margin-bottom: 30px;
-        font-size: 2.5rem;
-        border-bottom: 2px solid #0056b3;
-        display: inline-block; /* To make border-bottom fit content */
-        padding-bottom: 10px;
-    }
-
-    .slider-container {
-        width: 100%;
-        overflow: hidden; /* Hide overflowing parts of the track */
-        position: relative;
-        padding: 20px 0; /* Vertical padding around slider */
-    }
-
-    .slider-track {
-        display: flex;
-        width: max-content; /* Allows all slides to be on one line */
-        animation: scrollProducts 30s linear infinite; /* Animation: speed, type, loop */
-        white-space: nowrap; /* Prevent slides from wrapping to next line */
-    }
-
-    .product-slide {
-        flex-shrink: 0; /* Prevent slides from shrinking */
-        width: 180px; /* Base width of each slide */
-        margin-right: 20px; /* Space between slides */
-        text-align: center;
-        background-color: #ffffff; /* Light background for individual slides */
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        padding: 15px;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .product-slide:hover {
-        transform: translateY(-5px); /* Lift effect on hover */
-        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    }
-
-    .product-slide img {
-        max-width: 100%;
-        height: 120px; /* Fixed height for consistent image display */
-        object-fit: contain; /* Ensures image fits without cropping */
-        border-radius: 5px;
-    }
-
-    /* Keyframes for the continuous scroll animation */
-    /* Calculation: (width of one slide + margin-right) * number of unique slides */
-    /* (180px + 20px) * 6 unique slides = 1200px */
-    @keyframes scrollProducts {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-1200px); } /* Scrolls exactly one set of unique slides */
-    }
-
-    /* Pause animation on hover */
-    .slider-container:hover .slider-track {
-        animation-play-state: paused;
-    }
-
-    /* Quick Info Section */
-    #quick-info {
-      text-align: center;
-      background-color: #eef7ff; /* Light blue background */
-      padding: 40px;
-      margin-bottom: 40px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0, 123, 255, 0.1);
-      border: 1px solid #cce5ff;
-    }
-    #quick-info h2 {
-      font-size: 2.5rem;
-      color: #0056b3; /* Darker blue for heading */
-      margin-bottom: 25px;
-      border-bottom: none; /* No border for this H2 */
-    }
-    #quick-info .info-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
-    #quick-info .info-card {
-      background-color: #ffffff;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
-      flex: 1 1 calc(33% - 40px); /* Adjusts for 3 columns on larger screens */
-      min-width: 280px; /* Minimum width for cards */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    #quick-info .info-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    }
-    #quick-info .info-card i {
-      font-size: 2.5rem;
-      color: #007bff;
-      margin-bottom: 15px;
-    }
-    #quick-info .info-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      color: #333;
-    }
-    #quick-info .info-card p {
-      font-size: 1rem;
-      color: #666;
-      margin-bottom: 15px;
-    }
-    #quick-info .info-card .btn {
-      display: inline-block;
-      background-color: #007bff;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-    #quick-info .info-card .btn:hover {
-      background-color: #0056b3;
-      transform: translateY(-2px);
-    }
-
-    /* Footer Styling */
-    footer {
-      background-color: #333; /* Dark footer */
-      color: #ccc; /* Lighter text for footer */
-      text-align: center;
-      padding: 25px;
-      margin-top: 50px;
-      font-size: 0.9rem;
-      border-top: 1px solid #444;
-      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
-    }
-    footer a {
-        color: #007bff;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-    footer a:hover {
-        color: #fff;
-    }
-
-
-    /* Responsive Adjustments for Main Page */
-    @media (max-width: 992px) {
-        #quick-info .info-card {
-            flex: 1 1 calc(50% - 30px); /* 2 columns on tablets */
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>DEE KAY ELECTRONICS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles & Body */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif; /* Default font */
         }
-    }
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.5rem;
-      }
-      header p {
-        font-size: 1rem;
-      }
-      nav a {
-        margin: 0 10px;
-        font-size: 1rem;
-      }
-      .container {
-        margin: 30px 15px;
-        padding: 30px 15px;
-      }
-      .section {
-        padding: 20px;
-      }
-      .section h2 {
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-      }
-      .section p {
-        font-size: 1rem;
-      }
-       #quick-info h2, #brands h2 {
-          font-size: 2rem;
-      }
-      #quick-info .info-card {
-          flex: 1 1 100%; /* Single column on small mobiles */
-      }
-      /* Responsive adjustments for the slider */
-      .product-slide {
-          width: 150px; /* Smaller width on tablets */
-          margin-right: 15px;
-      }
-      .product-slide img {
-          height: 100px;
-      }
-      /* Recalculate keyframe for smaller width */
-      @keyframes scrollProducts {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-165px * 6)); } /* (150px + 15px) * 6 unique slides */
-      }
-    }
+        body {
+            background-color: #f8f8f8; /* Light background */
+            color: #333; /* Darker text color */
+            line-height: 1.6;
+            opacity: 0; /* Start hidden for fade-in animation */
+            animation: fadeInMain 0.8s ease-out forwards; /* Fade in animation */
+        }
 
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      header p {
-        font-size: 0.9rem;
-      }
-      nav {
-        flex-direction: column; /* Stack nav links vertically */
-        padding: 10px;
-      }
-      nav a {
-        display: block;
-        margin: 5px 0;
-      }
-      .container {
-        margin: 20px 10px;
-        padding: 20px 10px;
-        border-radius: 10px;
-      }
-      .section h2 {
-        font-size: 1.5rem;
-      }
-      #quick-info h2, #brands h2 {
-          font-size: 1.8rem;
-      }
-      /* Responsive adjustments for the slider */
-      .product-slide {
-          width: 120px; /* Even smaller on mobiles */
-          margin-right: 10px;
-      }
-      .product-slide img {
-          height: 80px;
-      }
-      /* Recalculate keyframe for even smaller width */
-      @keyframes scrollProducts {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-130px * 6)); } /* (120px + 10px) * 6 unique slides */
-      }
-    }
-  </style>
+        /* Page entry animation */
+        @keyframes fadeInMain {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #ffffff; /* White background */
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft shadow */
+            border-bottom: 1px solid #e0e0e0;
+        }
+        header h1 {
+            font-family: 'Orbitron', sans-serif; /* Sci-fi font for main heading */
+            font-size: 3.5rem; /* Larger font size */
+            margin-bottom: 10px;
+            color: #007bff; /* Vibrant blue accent */
+            text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.3), -2px -2px 5px rgba(0, 123, 255, 0.1); /* Subtle 3D-like glow */
+            letter-spacing: 2px; /* Add some spacing */
+            animation: pulsateTitle 2s infinite alternate ease-in-out; /* Pulsating glow */
+        }
+
+        @keyframes pulsateTitle {
+            0% { text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.3), -2px -2px 5px rgba(0, 123, 255, 0.1); }
+            100% { text-shadow: 2px 2px 8px rgba(0, 123, 255, 0.6), -2px -2px 8px rgba(0, 123, 255, 0.3); }
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #555; /* Muted text for tagline */
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #ffffff; /* White background */
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky; /* Keeps nav visible on scroll */
+            top: 0;
+            z-index: 1000; /* Ensures nav is on top of other content */
+        }
+        nav a {
+            color: #007bff; /* Vibrant blue for nav links */
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            padding-bottom: 5px;
+        }
+        nav a:hover {
+            color: #0056b3; /* Darker blue on hover */
+            border-bottom: 2px solid #0056b3;
+        }
+
+        /* Main Container */
+        .container {
+            padding: 40px 20px;
+            max-width: 1000px; /* Wider container */
+            margin: 40px auto;
+            background: #ffffff; /* White background for main content area */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08); /* Soft shadow for container */
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 10px; /* Rounded corners for sections */
+            background-color: #fdfdfd; /* Slightly off-white for individual sections */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03); /* Very subtle shadow */
+            border: 1px solid #eee; /* Light border */
+        }
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        .section h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #007bff;
+            font-size: 2.2rem;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+        .section p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+        .section p strong {
+            color: #007bff; /* Highlight strong text with accent color */
+        }
+
+        /* Brands/Product Showcase Section (New!) */
+        #brands { /* Renamed for clarity, but still ID "brands" as requested for navigation */
+            text-align: center;
+            padding: 40px;
+            background-color: #f0f4f8; /* Light grey-blue background */
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Inner shadow */
+            overflow: hidden; /* Crucial for clipping the slider */
+        }
+        #brands h2 {
+            color: #0056b3; /* Darker blue heading */
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            border-bottom: 2px solid #0056b3;
+            display: inline-block; /* To make border-bottom fit content */
+            padding-bottom: 10px;
+        }
+
+        .slider-container {
+            width: 100%;
+            overflow: hidden; /* Hide overflowing parts of the track */
+            position: relative;
+            padding: 20px 0; /* Vertical padding around slider */
+        }
+
+        .slider-track {
+            display: flex;
+            width: max-content; /* Allows all slides to be on one line */
+            animation: scrollProducts 30s linear infinite; /* Animation: speed, type, loop */
+            white-space: nowrap; /* Prevent slides from wrapping to next line */
+        }
+
+        .product-slide {
+            flex-shrink: 0; /* Prevent slides from shrinking */
+            width: 180px; /* Base width of each slide */
+            margin-right: 20px; /* Space between slides */
+            text-align: center;
+            background-color: #ffffff; /* Light background for individual slides */
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 15px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .product-slide:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-slide img {
+            max-width: 100%;
+            height: 120px; /* Fixed height for consistent image display */
+            object-fit: contain; /* Ensures image fits without cropping */
+            border-radius: 5px;
+        }
+
+        /* Keyframes for the continuous scroll animation */
+        /* Calculation: (width of one slide + margin-right) * number of unique slides */
+        /* (180px + 20px) * 6 unique slides = 1200px */
+        @keyframes scrollProducts {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-1200px); } /* Scrolls exactly one set of unique slides */
+        }
+
+        /* Pause animation on hover */
+        .slider-container:hover .slider-track {
+            animation-play-state: paused;
+        }
+
+        /* Quick Info Section */
+        #quick-info {
+            text-align: center;
+            background-color: #eef7ff; /* Light blue background */
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 123, 255, 0.1);
+            border: 1px solid #cce5ff;
+        }
+        #quick-info h2 {
+            font-size: 2.5rem;
+            color: #0056b3; /* Darker blue for heading */
+            margin-bottom: 25px;
+            border-bottom: none; /* No border for this H2 */
+        }
+        #quick-info .info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        #quick-info .info-card {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+            flex: 1 1 calc(33% - 40px); /* Adjusts for 3 columns on larger screens */
+            min-width: 280px; /* Minimum width for cards */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        #quick-info .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        #quick-info .info-card i {
+            font-size: 2.5rem;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        #quick-info .info-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        #quick-info .info-card p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        #quick-info .info-card .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        #quick-info .info-card .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #333; /* Dark footer */
+            color: #ccc; /* Lighter text for footer */
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            border-top: 1px solid #444;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+        }
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #fff;
+        }
+
+
+        /* Fixed WhatsApp and Call Buttons */
+        .fixed-buttons {
+            position: fixed;
+            bottom: 30px; /* Adjust as needed */
+            right: 30px; /* Adjust as needed */
+            z-index: 1000; /* Ensure they are above other content */
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 15px; /* Space between buttons */
+        }
+
+        .fixed-buttons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px; /* Size of the button */
+            height: 60px; /* Size of the button */
+            border-radius: 50%; /* Make them circular */
+            color: white;
+            font-size: 28px; /* Icon size */
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .fixed-buttons a:hover {
+            transform: scale(1.1); /* Slightly enlarge on hover */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366; /* WhatsApp green */
+        }
+
+        .call-btn {
+            background-color: #007bff; /* Your primary blue accent color */
+        }
+
+
+        /* Responsive Adjustments for Main Page */
+        @media (max-width: 992px) {
+            #quick-info .info-card {
+                flex: 1 1 calc(50% - 30px); /* 2 columns on tablets */
+            }
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            nav a {
+                margin: 0 10px;
+                font-size: 1rem;
+            }
+            .container {
+                margin: 30px 15px;
+                padding: 30px 15px;
+            }
+            .section {
+                padding: 20px;
+            }
+            .section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+            .section p {
+                font-size: 1rem;
+            }
+            #quick-info h2, #brands h2 {
+                font-size: 2rem;
+            }
+            #quick-info .info-card {
+                flex: 1 1 100%; /* Single column on small mobiles */
+            }
+            /* Responsive adjustments for the slider */
+            .product-slide {
+                width: 150px; /* Smaller width on tablets */
+                margin-right: 15px;
+            }
+            .product-slide img {
+                height: 100px;
+            }
+            /* Recalculate keyframe for smaller width */
+            @keyframes scrollProducts {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-165px * 6)); } /* (150px + 15px) * 6 unique slides */
+            }
+
+            /* Media Queries for Fixed Buttons (adjust their position on smaller screens) */
+            .fixed-buttons {
+                bottom: 20px;
+                right: 20px;
+                gap: 10px;
+            }
+            .fixed-buttons a {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 0.9rem;
+            }
+            nav {
+                flex-direction: column; /* Stack nav links vertically */
+                padding: 10px;
+            }
+            nav a {
+                display: block;
+                margin: 5px 0;
+            }
+            .container {
+                margin: 20px 10px;
+                padding: 20px 10px;
+                border-radius: 10px;
+            }
+            .section h2 {
+                font-size: 1.5rem;
+            }
+            #quick-info h2, #brands h2 {
+                font-size: 1.8rem;
+            }
+            /* Responsive adjustments for the slider */
+            .product-slide {
+                width: 120px; /* Even smaller on mobiles */
+                margin-right: 10px;
+            }
+            .product-slide img {
+                height: 80px;
+            }
+            /* Recalculate keyframe for even smaller width */
+            @keyframes scrollProducts {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-130px * 6)); } /* (120px + 10px) * 6 unique slides */
+            }
+
+            .fixed-buttons {
+                bottom: 15px;
+                right: 15px;
+            }
+            .fixed-buttons a {
+                width: 45px;
+                height: 45px;
+                font-size: 22px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>DEE KAY ELECTRONICS</h1>
-    <p>Your Trusted Source for Quality Electronics & Home Appliances</p>
-  </header>
+    <header>
+        <h1>DEE KAY ELECTRONICS</h1>
+        <p>Your Trusted Source for Quality Electronics & Home Appliances</p>
+    </header>
 
-  <nav>
-    <a href="#brands">Products</a> <a href="#quick-info">Quick Info</a>
-    <a href="#about">About Us</a>
-  </nav>
+    <nav>
+        <a href="#brands">Products</a>
+        <a href="#quick-info">Quick Info</a>
+        <a href="#about">About Us</a>
+    </nav>
 
-  <div class="container">
+    <div class="container">
 
-    <section id="brands" class="section">
-      <h2>Product Showcase</h2> <div class="slider-container">
-          <div class="slider-track">
-              <div class="product-slide"><img src="https://via.placeholder.com/200x150/007bff/ffffff?text=Smart+TV" alt="Smart TV"></div>
-              <div class="product-slide"><img src="https://via.placeholder.com/200x150/28a745/ffffff?text=Washing+Machine" alt="Washing Machine"></div>
-              <div class="product-slide"><img src="https://via.placeholder.com/200x150/ffc107/333333?text=Refrigerator" alt="Refrigerator"></div>
-              <div class="product-slide"><img src="https://via.placeholder.com/200x150/dc3545/ffffff?text=Smartphone" alt="Microwave"></div>
-              <div class="product-slide"><img src="https://via.placeholder.com/200x150/6f42c1/ffffff?text=Laptop" alt="Kitchen Appliances"></div>
-              <div class="product-slide"><img src="https://via.placeholder.com/200x150/17a2b8/ffffff?text=Air+Conditioner" alt="Air Conditioner"></div>
+        <section id="brands" class="section">
+            <h2>Product Showcase</h2>
+            <div class="slider-container">
+                <div class="slider-track">
+                    <div class="product-slide"><img src="https://via.placeholder.com/200x150/007bff/ffffff?text=Smart+TV" alt="Smart TV"></div>
+                    <div class="product-slide"><img src="https://via.placeholder.com/200x150/28a745/ffffff?text=Washing+Machine" alt="Washing Machine"></div>
+                    <div class="product-slide"><img src="https://via.placeholder.com/200x150/ffc107/333333?text=Refrigerator" alt="Refrigerator"></div>
+                    <div class="product-slide"><img src="https://via.placeholder.com/200x150/dc3545/ffffff?text=Smartphone" alt="Microwave"></div>
+                    <div class="product-slide"><img src="https://via.placeholder.com/200x150/6f42c1/ffffff?text=Laptop" alt="Kitchen Appliances"></div>
+                    <div class="product-slide"><img src="https://via.placeholder.com/200x150/17a2b8/ffffff?text=Air+Conditioner" alt="Air Conditioner"></div>
 
-              <div class="product-slide"><img src="https://via.placeholder.com/200x150/007bff/ffffff?text=Smart+TV" alt="Smart TV"></div>
-              <div class="product-slide"><img src="https://via.placeholder.com/200x150/28a745/ffffff?text=Washing+Machine" alt="Washing Machine"></div>
-              <div class="product-slide"><img src="https://via.placeholder.com/200x150/ffc107/333333?text=Refrigerator" alt="Refrigerator"></div>
-              <div class="product-slide"><img src="https://via.placeholder.com/200x150/dc3545/ffffff?text=Smartphone" alt="Smartphone"></div>
-              <div class="product-slide"><img src="https://via.placeholder.com/200x150/6f42c1/ffffff?text=Laptop" alt="Laptop"></div>
-              <div class="product-slide"><img src="https://via.placeholder.com/200x150/17a2b8/ffffff?text=Air+Conditioner" alt="Air Conditioner"></div>
-          </div>
-      </div>
-    </section>
+                    <div class="product-slide"><img src="https://via.placeholder.com/200x150/007bff/ffffff?text=Smart+TV" alt="Smart TV"></div>
+                    <div class="product-slide"><img src="https://via.placeholder.com/200x150/28a745/ffffff?text=Washing+Machine" alt="Washing Machine"></div>
+                    <div class="product-slide"><img src="https://via.placeholder.com/200x150/ffc107/333333?text=Refrigerator" alt="Refrigerator"></div>
+                    <div class="product-slide"><img src="https://via.placeholder.com/200x150/dc3545/ffffff?text=Smartphone" alt="Smartphone"></div>
+                    <div class="product-slide"><img src="https://via.placeholder.com/200x150/6f42c1/ffffff?text=Laptop" alt="Laptop"></div>
+                    <div class="product-slide"><img src="https://via.placeholder.com/200x150/17a2b8/ffffff?text=Air+Conditioner" alt="Air Conditioner"></div>
+                </div>
+            </div>
+        </section>
 
-    <section id="quick-info" class="section">
-      <h2>Your Convenient Connection</h2>
-      <div class="info-grid">
-        <div class="info-card">
-          <i class="fas fa-map-marker-alt"></i>
-          <h3>Visit Our Store</h3>
-          <p>Main road, Puran Nagar, NEWPLOT, Jammu, Jammu and Kashmir</p>
-          <a href="https://maps.app.goo.gl/UzZY1dRvox7F6huR8" target="_blank" class="btn">Get Directions</a>
-        </div>
-        <div class="info-card">
-          <i class="fas fa-phone"></i>
-          <h3>Call Us</h3>
-          <p>Have a question? We're here to help!</p>
-          <a href="tel:+919906320240" class="btn">Give Us a Call</a>
-        </div>
-        <div class="info-card">
-          <i class="fas fa-envelope"></i>
-          <h3>Email Us</h3>
-          <p>Send us your queries anytime.</p>
-          <a href="mailto:daleepbamotra74138@gmail.com" class="btn">Send Email</a>
-        </div>
-      </div>
-    </section>
+        <section id="quick-info" class="section">
+            <h2>Your Convenient Connection</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Visit Our Store</h3>
+                    <p>Main road, Puran Nagar, NEWPLOT, Jammu, Jammu and Kashmir</p>
+                    <a href="https://maps.app.goo.gl/UzZY1dRvox7F6huR8" target="_blank" class="btn">Get Directions</a>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Call Us</h3>
+                    <p>Have a question? We're here to help!</p>
+                    <a href="tel:+919906320240" class="btn">Give Us a Call</a>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>Send us your queries anytime.</p>
+                    <a href="mailto:daleepbamotra74138@gmail.com" class="btn">Send Email</a>
+                </div>
+            </div>
+        </section>
 
-    <section id="about" class="section">
-      <h2>About Us</h2>
-      <p>
-        Welcome to **DEE KAY ELECTRONICS**, your trusted shop for the latest and most reliable electronic appliances. Located in Jammu, we’ve been serving customers with dedication and quality for years.
-      </p>
-      <p>
-        From TVs to refrigerators, we deal with all major brands and ensure the best value for your money. Stay tuned — our product catalog is coming soon!
-      </p>
-    </section>
+        <section id="about" class="section">
+            <h2>About Us</h2>
+            <p>
+                Welcome to **DEE KAY ELECTRONICS**, your trusted shop for the latest and most reliable electronic appliances. Located in Jammu, we’ve been serving customers with dedication and quality for years.
+            </p>
+            <p>
+                From TVs to refrigerators, we deal with all major brands and ensure the best value for your money. Stay tuned — our product catalog is coming soon!
+            </p>
+        </section>
 
-  </div>
+    </div>
 
-  <footer>
-    © 2025 DEE KAY ELECTRONICS. All rights reserved. | Designed with ❤️ in Jammu
-  </footer>
+    <footer>
+        © 2025 DEE KAY ELECTRONICS. All rights reserved. | Designed with ❤️ in Jammu
+    </footer>
+
+    <div class="fixed-buttons">
+        <a href="https://wa.me/919906320240" class="whatsapp-btn" target="_blank" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+919906320240" class="call-btn" aria-label="Call Us">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+    </div>
 
 </body>
 </html>
