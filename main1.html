@@ -3,17 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DEE KAY ELECTRONICS</title>
+  <title>DEE KAY ELECTRONICS - Home Appliances & Electronics in Jammu</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    /* --- General Styling --- */
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: "Roboto", sans-serif;
       line-height: 1.6;
       background-color: #f4f4f9;
       color: #333;
     }
 
+    /* --- Header & Navigation --- */
     header {
       background: linear-gradient(90deg, #007bff, #00c6ff);
       color: #fff;
@@ -22,10 +29,12 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     }
 
     header h1 {
       margin: 0;
+      font-family: "Orbitron", sans-serif;
       font-size: 2rem;
     }
 
@@ -39,58 +48,195 @@
       margin: 0 15px;
       font-weight: bold;
       transition: color 0.3s ease, border-bottom 0.3s ease;
+      padding-bottom: 5px;
     }
 
-    nav a:hover {
+    nav a:hover, nav a.active {
       color: #ffeb3b;
       border-bottom: 2px solid #ffeb3b;
     }
-
+    
     section {
-      padding: 40px 20px;
+      padding: 60px 20px;
       text-align: center;
     }
 
-    /* floating brand logos (your original effect) */
-    .brand-slider {
-      overflow: hidden;
-      white-space: nowrap;
-      box-sizing: border-box;
-      background: #fff;
-      padding: 20px 0;
+    section:nth-of-type(odd) {
+      background-color: #ffffff;
     }
 
-    .brand-slider img {
-      display: inline-block;
-      margin: 0 40px;
-      height: 60px;
-      animation: slide 15s linear infinite;
+    section h2 {
+      font-family: "Orbitron", sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+
+    section .section-subtitle {
+        max-width: 800px;
+        margin: 0 auto 40px auto;
+        font-size: 1.1rem;
+        color: #555;
+    }
+
+    /* --- MODIFIED: Infinite Brand Logo Slider --- */
+    .brand-slider {
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      padding: 30px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .brand-slider::before,
+    .brand-slider::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 150px;
+      height: 100%;
+      z-index: 2;
+    }
+
+    .brand-slider::before {
+      left: 0;
+      background: linear-gradient(to right, white, rgba(255, 255, 255, 0));
+    }
+
+    .brand-slider::after {
+      right: 0;
+      background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
+    }
+
+    .brand-track {
+      display: flex; /* MODIFIED: Using flexbox for alignment */
+      align-items: center;
+      width: fit-content; /* Let the container size itself */
+      animation: slide 60s linear infinite; /* MODIFIED: Slower and smoother animation */
+    }
+
+    .brand-track:hover {
+      animation-play-state: paused;
+    }
+
+    .brand-slider .slide-item {
+        height: 50px; /* MODIFIED: Slightly smaller for more logos */
+        margin: 0 40px;
+        filter: grayscale(100%);
+        opacity: 0.8;
+        transition: filter 0.3s ease, opacity 0.3s ease;
+    }
+    
+    .brand-slider .slide-item:hover {
+        filter: grayscale(0%);
+        opacity: 1;
     }
 
     @keyframes slide {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
+      from { transform: translateX(0%); }
+      to { transform: translateX(-50%); }
     }
 
+    /* --- MODIFIED: Product Card Section --- */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+      padding: 0 20px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 25px rgba(0, 123, 255, 0.15);
+    }
+    
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .product-card-content {
+      padding: 20px;
+    }
+
+    .product-card h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: #333;
+    }
+
+    .product-card p {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 0;
+    }
+    
+    /* --- NEW: Why Choose Us Section --- */
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 40px auto 0;
+    }
+
+    .feature-item {
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .feature-item .fas {
+        font-size: 2.5rem;
+        color: #007bff;
+        margin-bottom: 15px;
+    }
+
+    .feature-item h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    /* --- Footer --- */
     footer {
       background: #333;
       color: #fff;
       text-align: center;
-      padding: 20px;
+      padding: 40px 20px;
       margin-top: 20px;
     }
 
     footer a {
       color: #00c6ff;
       text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    footer a:hover {
+        color: #ffeb3b;
     }
 
-    /* Floating WhatsApp & Call Buttons */
+    /* --- Floating WhatsApp & Call Buttons --- */
     .fixed-buttons {
       position: fixed;
-      top: 50%;
+      bottom: 20px;
       right: 20px;
-      transform: translateY(-50%);
       display: flex;
       flex-direction: column;
       gap: 15px;
@@ -108,20 +254,17 @@
       font-size: 24px;
       text-decoration: none;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .fixed-buttons a:hover {
       transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     }
 
-    .whatsapp-btn {
-      background-color: #25D366;
-    }
-
-    .call-btn {
-      background-color: #007bff;
-    }
+    .whatsapp-btn { background-color: #25D366; }
+    .call-btn { background-color: #007bff; }
+    
   </style>
 </head>
 <body>
@@ -129,48 +272,129 @@
     <h1>DEE KAY ELECTRONICS</h1>
     <nav>
       <a href="#home">Home</a>
-      <a href="#about">About</a>
       <a href="#products">Products</a>
+      <a href="#why-us">Why Us</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
+  <!-- MODIFIED: Brands section with updated logos -->
+  <div class="brand-slider">
+    <div class="brand-track">
+      <!-- Original Set -->
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Samsung_Logo.svg" alt="Samsung" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Voltas_logo.svg/2560px-Voltas_logo.svg.png" alt="Voltas" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Blue_Star_Limited_Logo.svg/2560px-Blue_Star_Limited_Logo.svg.png" alt="Blue Star" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/5/51/LG_logo_%282015%29.svg" alt="LG" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Whirlpool_Corporation_Logo.svg/1280px-Whirlpool_Corporation_Logo.svg.png" alt="Whirlpool" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Bajaj_Logo.svg/2560px-Bajaj_Logo.svg.png" alt="Bajaj" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/240px-Xiaomi_logo_%282021-%29.svg.png" alt="Mi" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Morphy_Richards_logo.svg/1280px-Morphy_Richards_logo.svg.png" alt="Morphy Richards" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kent_RO_Systems_logo.svg/512px-Kent_RO_Systems_logo.svg.png" alt="KENT" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Luminous_logo.svg/1280px-Luminous_logo.svg.png" alt="Luminous" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Usha_International_logo.svg/1280px-Usha_International_logo.svg.png" alt="Usha" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Intex_Technologies_logo.svg/1280px-Intex_Technologies_logo.svg.png" alt="Intex" />
+      <!-- DUPLICATED Set for infinite loop -->
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Samsung_Logo.svg" alt="Samsung" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Voltas_logo.svg/2560px-Voltas_logo.svg.png" alt="Voltas" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Blue_Star_Limited_Logo.svg/2560px-Blue_Star_Limited_Logo.svg.png" alt="Blue Star" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/5/51/LG_logo_%282015%29.svg" alt="LG" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Whirlpool_Corporation_Logo.svg/1280px-Whirlpool_Corporation_Logo.svg.png" alt="Whirlpool" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Bajaj_Logo.svg/2560px-Bajaj_Logo.svg.png" alt="Bajaj" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/240px-Xiaomi_logo_%282021-%29.svg.png" alt="Mi" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Morphy_Richards_logo.svg/1280px-Morphy_Richards_logo.svg.png" alt="Morphy Richards" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kent_RO_Systems_logo.svg/512px-Kent_RO_Systems_logo.svg.png" alt="KENT" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Luminous_logo.svg/1280px-Luminous_logo.svg.png" alt="Luminous" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Usha_International_logo.svg/1280px-Usha_International_logo.svg.png" alt="Usha" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Intex_Technologies_logo.svg/1280px-Intex_Technologies_logo.svg.png" alt="Intex" />
+    </div>
+  </div>
+
   <section id="home">
-    <h2>Welcome to DEE KAY ELECTRONICS</h2>
-    <p>Your one-stop destination for the latest electronics at unbeatable prices!</p>
+    <h2>Your Trusted Home Appliance Destination</h2>
+    <p class="section-subtitle">Bringing comfort and convenience to homes across Jammu with the latest electronics from top brands.</p>
+    <img src="https://images.unsplash.com/photo-1615529328327-48d3f47a3844?q=80&w=1974&auto=format&fit=crop" alt="A modern living room with a large TV and appliances" style="width: 100%; max-width: 900px; border-radius: 10px; margin-top: 20px;">
+  </section>
+  
+  <!-- MODIFIED: Products section with updated categories -->
+  <section id="products">
+    <h2>Our Products</h2>
+    <p class="section-subtitle">We are authorized dealers for a wide range of home appliances. Explore our popular categories below.</p>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1601643157091-ce5c665179ab?q=80&w=2070&auto=format&fit=crop" alt="Televisions" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=Televisions';">
+        <div class="product-card-content">
+          <h3>Televisions</h3>
+          <p>Experience breathtaking picture quality with our range of LED, QLED, and 4K Smart TVs.</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1627993434393-d8b81f1f3112?q=80&w=1965&auto=format&fit=crop" alt="Refrigerators & Washing Machines" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=Appliances';">
+        <div class="product-card-content">
+          <h3>Refrigerators & Washing Machines</h3>
+          <p>Keep your food fresh and clothes clean with our energy-efficient models.</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1568498832327-b5883a6a1251?q=80&w=2070&auto=format&fit=crop" alt="Air Conditioners" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=ACs';">
+        <div class="product-card-content">
+          <h3>Air Conditioners</h3>
+          <p>Stay cool with our powerful and efficient split and window AC units.</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=2070&auto=format&fit=crop" alt="Home & Kitchen Appliances" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=More';">
+        <div class="product-card-content">
+          <h3>Home & Kitchen Appliances</h3>
+          <p>Microwaves, water filters, inverters, fans, heaters, and much more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: Why Choose Us Section -->
+  <section id="why-us">
+    <h2>Why Choose Us?</h2>
+    <p class="section-subtitle">We are more than just an electronics store. We are your partners in building a better home.</p>
+    <div class="features-grid">
+        <div class="feature-item">
+            <i class="fas fa-medal"></i>
+            <h3>Authorized Dealers</h3>
+            <p>We only sell 100% genuine products from trusted brands with official warranties.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-tags"></i>
+            <h3>Competitive Pricing</h3>
+            <p>Get the best value for your money with our fair and transparent pricing.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-headset"></i>
+            <h3>Expert Guidance</h3>
+            <p>Our knowledgeable staff is here to help you choose the perfect appliance for your needs.</p>
+        </div>
+    </div>
   </section>
 
   <section id="about">
     <h2>About Us</h2>
-    <p>At DEE KAY ELECTRONICS, we provide high-quality electronics ranging from smartphones to home appliances, ensuring top-notch service and customer satisfaction.</p>
+    <p class="section-subtitle">Since our establishment, DEE KAY ELECTRONICS has been a cornerstone of the Jammu community for all electronic needs. We are dedicated to providing high-quality home appliances, ensuring top-notch service and ultimate customer satisfaction every time. Our commitment is to bring the best technology and convenience to your doorstep.</p>
   </section>
-
-  <section id="products">
-    <h2>Our Products</h2>
-    <p>We deal in a wide variety of electronics from top brands.</p>
-  </section>
-
-  <!-- Floating Brands Section -->
-  <div class="brand-slider">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Samsung_Logo.svg" alt="Samsung">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Sony_logo.svg" alt="Sony">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/LG_logo_%282015%29.svg" alt="LG">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Philips_logo.svg" alt="Philips">
-  </div>
 
   <section id="contact">
     <h2>Contact Us</h2>
-    <p>Phone: +91 99063 20240</p>
-    <p>Email: info@deekayelectronics.com</p>
-    <p>Address: Srinagar, Jammu and Kashmir, India</p>
+    <p class="section-subtitle">Have questions? We're here to help! Reach out to us via phone, email, or visit us in-store.</p>
+    <p><strong>Phone:</strong> <a href="tel:+919906320240">+91 99063 20240</a></p>
+    <p><strong>Email:</strong> <a href="mailto:info@deekayelectronics.com">info@deekayelectronics.com</a></p>
+    <p><strong>Address:</strong> Srinagar, Jammu and Kashmir, India</p>
   </section>
 
   <footer>
     <p>&copy; 2024 DEE KAY ELECTRONICS. All Rights Reserved.</p>
-    <p>Follow us on 
-      <a href="https://facebook.com" target="_blank">Facebook</a>, 
-      <a href="https://instagram.com" target="_blank">Instagram</a>, 
+    <p>
+      Follow us on
+      <a href="https://facebook.com" target="_blank">Facebook</a>,
+      <a href="https://instagram.com" target="_blank">Instagram</a>,
       <a href="https://twitter.com" target="_blank">Twitter</a>
     </p>
   </footer>
