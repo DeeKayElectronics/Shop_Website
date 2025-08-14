@@ -51,30 +51,25 @@
       text-align: center;
     }
 
-    #products .product-slider {
-      display: flex;
-      overflow-x: auto;
-      gap: 20px;
-      padding: 20px;
-      scroll-behavior: smooth;
-    }
-
-    #products .product {
-      min-width: 250px;
+    /* floating brand logos (your original effect) */
+    .brand-slider {
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
       background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 15px;
-      transition: transform 0.3s ease;
+      padding: 20px 0;
     }
 
-    #products .product:hover {
-      transform: translateY(-10px);
+    .brand-slider img {
+      display: inline-block;
+      margin: 0 40px;
+      height: 60px;
+      animation: slide 15s linear infinite;
     }
 
-    #products img {
-      width: 100%;
-      border-radius: 10px;
+    @keyframes slide {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
 
     footer {
@@ -152,29 +147,17 @@
 
   <section id="products">
     <h2>Our Products</h2>
-    <div class="product-slider">
-      <div class="product">
-        <img src="https://via.placeholder.com/250x150" alt="Smartphone">
-        <h3>Smartphone</h3>
-        <p>Latest models with advanced features.</p>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/250x150" alt="Laptop">
-        <h3>Laptop</h3>
-        <p>High-performance laptops for work and play.</p>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/250x150" alt="Smart TV">
-        <h3>Smart TV</h3>
-        <p>Enjoy entertainment like never before.</p>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/250x150" alt="Microwave">
-        <h3>Microwave</h3>
-        <p>Modern and efficient kitchen appliances.</p>
-      </div>
-    </div>
+    <p>We deal in a wide variety of electronics from top brands.</p>
   </section>
+
+  <!-- Floating Brands Section -->
+  <div class="brand-slider">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Samsung_Logo.svg" alt="Samsung">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Sony_logo.svg" alt="Sony">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/LG_logo_%282015%29.svg" alt="LG">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Philips_logo.svg" alt="Philips">
+  </div>
 
   <section id="contact">
     <h2>Contact Us</h2>
