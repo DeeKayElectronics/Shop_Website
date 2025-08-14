@@ -157,6 +157,8 @@
       overflow: hidden;
       text-align: left;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
     }
 
     .product-card:hover {
@@ -172,6 +174,7 @@
 
     .product-card-content {
       padding: 20px;
+      flex-grow: 1; /* Allows content to fill space */
     }
 
     .product-card h3 {
@@ -317,7 +320,7 @@
     <img src="https://images.unsplash.com/photo-1615529328327-48d3f47a3844?q=80&w=1974&auto=format&fit=crop" alt="A modern living room with a large TV and appliances" style="width: 100%; max-width: 900px; border-radius: 10px; margin-top: 20px;">
   </section>
   
-  <!-- MODIFIED: Products section with updated categories -->
+  <!-- MODIFIED: Products section with updated categories and images -->
   <section id="products">
     <h2>Our Products</h2>
     <p class="section-subtitle">We are authorized dealers for a wide range of home appliances. Explore our popular categories below.</p>
@@ -330,10 +333,17 @@
         </div>
       </div>
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1627993434393-d8b81f1f3112?q=80&w=1965&auto=format&fit=crop" alt="Refrigerators & Washing Machines" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=Appliances';">
+        <img src="https://images.unsplash.com/photo-1571175443880-49e1d25b2d6c?q=80&w=1974&auto=format&fit=crop" alt="Refrigerators" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=Refrigerators';">
         <div class="product-card-content">
-          <h3>Refrigerators & Washing Machines</h3>
-          <p>Keep your food fresh and clothes clean with our energy-efficient models.</p>
+          <h3>Refrigerators</h3>
+          <p>Keep your food fresh with our energy-efficient single and double-door models.</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1626806819282-2c1dc01694e8?q=80&w=1974&auto=format&fit=crop" alt="Washing Machines" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=Washing+Machines';">
+        <div class="product-card-content">
+          <h3>Washing Machines</h3>
+          <p>Discover our top-load and front-load washing machines for a perfect clean.</p>
         </div>
       </div>
       <div class="product-card">
@@ -344,7 +354,7 @@
         </div>
       </div>
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=2070&auto=format&fit=crop" alt="Home & Kitchen Appliances" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=More';">
+        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=2071&auto=format&fit=crop" alt="Home & Kitchen Appliances" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=More';">
         <div class="product-card-content">
           <h3>Home & Kitchen Appliances</h3>
           <p>Microwaves, water filters, inverters, fans, heaters, and much more.</p>
