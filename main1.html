@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DEE KAY ELECTRONICS - Home Appliances & Electronics in Jammu</title>
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     /* --- General Styling --- */
@@ -49,8 +51,10 @@
       font-weight: bold;
       transition: color 0.3s ease, border-bottom 0.3s ease;
       padding-bottom: 5px;
+      border-bottom: 2px solid transparent; /* Add transparent border for smooth transition */
     }
 
+    /* Active nav link style */
     nav a:hover, nav a.active {
       color: #ffeb3b;
       border-bottom: 2px solid #ffeb3b;
@@ -79,7 +83,7 @@
         color: #555;
     }
 
-    /* --- MODIFIED: Infinite Brand Logo Slider --- */
+    /* --- Infinite Brand Logo Slider --- */
     .brand-slider {
       background: #fff;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -110,10 +114,10 @@
     }
 
     .brand-track {
-      display: flex; /* MODIFIED: Using flexbox for alignment */
+      display: flex; 
       align-items: center;
-      width: fit-content; /* Let the container size itself */
-      animation: slide 60s linear infinite; /* MODIFIED: Slower and smoother animation */
+      width: fit-content;
+      animation: slide 60s linear infinite;
     }
 
     .brand-track:hover {
@@ -121,16 +125,17 @@
     }
 
     .brand-slider .slide-item {
-        height: 50px; /* MODIFIED: Slightly smaller for more logos */
+        height: 50px;
         margin: 0 40px;
         filter: grayscale(100%);
         opacity: 0.8;
-        transition: filter 0.3s ease, opacity 0.3s ease;
+        transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
     }
     
     .brand-slider .slide-item:hover {
         filter: grayscale(0%);
         opacity: 1;
+        transform: scale(1.1);
     }
 
     @keyframes slide {
@@ -138,7 +143,7 @@
       to { transform: translateX(-50%); }
     }
 
-    /* --- MODIFIED: Product Card Section --- */
+    /* --- Product Card Section --- */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -159,10 +164,18 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .product-card.visible {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .product-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-10px) !important;
       box-shadow: 0 8px 25px rgba(0, 123, 255, 0.15);
     }
     
@@ -170,11 +183,12 @@
       width: 100%;
       height: 220px;
       object-fit: cover;
+      background-color: #eee; /* Background for images that are loading */
     }
 
     .product-card-content {
       padding: 20px;
-      flex-grow: 1; /* Allows content to fill space */
+      flex-grow: 1;
     }
 
     .product-card h3 {
@@ -189,7 +203,7 @@
       margin-bottom: 0;
     }
     
-    /* --- NEW: Why Choose Us Section --- */
+    /* --- Why Choose Us Section --- */
     .features-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -203,6 +217,14 @@
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .feature-item.visible {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .feature-item .fas {
@@ -216,6 +238,56 @@
         margin-bottom: 10px;
     }
 
+    /* --- Contact Form Styling --- */
+    #contact-form {
+        max-width: 700px;
+        margin: 30px auto 0;
+        text-align: left;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #555;
+    }
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+        font-family: 'Roboto', sans-serif;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    }
+    .submit-btn {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+    .submit-btn:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+    }
+
+
     /* --- Footer --- */
     footer {
       background: #333;
@@ -224,15 +296,23 @@
       padding: 40px 20px;
       margin-top: 20px;
     }
+    
+    .footer-socials {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
 
-    footer a {
-      color: #00c6ff;
-      text-decoration: none;
-      transition: color 0.3s ease;
+    .footer-socials a {
+        color: #fff;
+        font-size: 1.5rem;
+        transition: color 0.3s ease, transform 0.3s ease;
     }
     
-    footer a:hover {
-        color: #ffeb3b;
+    .footer-socials a:hover {
+        color: #00c6ff;
+        transform: scale(1.2);
     }
 
     /* --- Floating WhatsApp & Call Buttons --- */
@@ -274,7 +354,7 @@
   <header>
     <h1>DEE KAY ELECTRONICS</h1>
     <nav>
-      <a href="#home">Home</a>
+      <a href="#home" class="active">Home</a>
       <a href="#products">Products</a>
       <a href="#why-us">Why Us</a>
       <a href="#about">About</a>
@@ -282,79 +362,79 @@
     </nav>
   </header>
 
-  <!-- MODIFIED: Brands section with updated logos -->
+  <!-- UPDATED: Brands section with latest user-provided links -->
   <div class="brand-slider">
     <div class="brand-track">
       <!-- Original Set -->
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Samsung_Logo.svg" alt="Samsung" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Voltas_logo.svg/2560px-Voltas_logo.svg.png" alt="Voltas" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Blue_Star_Limited_Logo.svg/2560px-Blue_Star_Limited_Logo.svg.png" alt="Blue Star" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/5/51/LG_logo_%282015%29.svg" alt="LG" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Whirlpool_Corporation_Logo.svg/1280px-Whirlpool_Corporation_Logo.svg.png" alt="Whirlpool" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Bajaj_Logo.svg/2560px-Bajaj_Logo.svg.png" alt="Bajaj" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/240px-Xiaomi_logo_%282021-%29.svg.png" alt="Mi" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Morphy_Richards_logo.svg/1280px-Morphy_Richards_logo.svg.png" alt="Morphy Richards" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kent_RO_Systems_logo.svg/512px-Kent_RO_Systems_logo.svg.png" alt="KENT" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Luminous_logo.svg/1280px-Luminous_logo.svg.png" alt="Luminous" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Usha_International_logo.svg/1280px-Usha_International_logo.svg.png" alt="Usha" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Intex_Technologies_logo.svg/1280px-Intex_Technologies_logo.svg.png" alt="Intex" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Samsung';">
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Voltas-Logo-PNG.png" alt="Voltas" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Voltas';">
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Blue_Star_primary_logo.png" alt="Blue Star" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Blue+Star';">
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/LG_logo_%282014%29.svg/600px-LG_logo_%282014%29.svg.png?20231109111316" alt="LG" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=LG';">
+      <img class="slide-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo7iwJzotLvyhmjK1QGW7HJLX68E5i0vD2tg&s" alt="Whirlpool" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Whirlpool';">
+      <img class="slide-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLi8K6tLLx0d2X3Ev22W903FtycfmVam6qtA&s" alt="Bajaj" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Bajaj';">
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/240px-Xiaomi_logo_%282021-%29.svg.png" alt="Xiaomi" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Xiaomi';">
+      <img class="slide-item" src="https://static.wikia.nocookie.net/logopedia/images/4/43/Morphy_Richards_2022_%28stacked%29.svg/revision/latest?cb=20220408213300" alt="Morphy Richards" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Morphy+R';">
+      <img class="slide-item" src="https://images.deccanchronicle.com/dc-Cover-uh27gp28c3p9bb7ol7v9m93lh4-20180918004821.Medi.jpeg" alt="KENT" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=KENT';">
+      <img class="slide-item" src="https://cdn.freelogovectors.net/wp-content/uploads/2023/12/luminous-logo-freelogovectors.net_.png" alt="Luminous" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Luminous';">
+      <img class="slide-item" src="https://www.driverlogistics.in/_next/image?url=https%3A%2F%2Fd1bpnn2a5id540.cloudfront.net%2F1691473136221%2F36fbb9f0-5f60-11ee-9f4c-97a9da22a67a.png&w=512&q=75" alt="Usha" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Usha';">
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Intex_Technologies_logo.svg/2560px-Intex_Technologies_logo.svg.png" alt="Intex" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Intex';">
       <!-- DUPLICATED Set for infinite loop -->
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Samsung_Logo.svg" alt="Samsung" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Voltas_logo.svg/2560px-Voltas_logo.svg.png" alt="Voltas" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Blue_Star_Limited_Logo.svg/2560px-Blue_Star_Limited_Logo.svg.png" alt="Blue Star" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/5/51/LG_logo_%282015%29.svg" alt="LG" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Whirlpool_Corporation_Logo.svg/1280px-Whirlpool_Corporation_Logo.svg.png" alt="Whirlpool" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Bajaj_Logo.svg/2560px-Bajaj_Logo.svg.png" alt="Bajaj" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/240px-Xiaomi_logo_%282021-%29.svg.png" alt="Mi" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Morphy_Richards_logo.svg/1280px-Morphy_Richards_logo.svg.png" alt="Morphy Richards" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kent_RO_Systems_logo.svg/512px-Kent_RO_Systems_logo.svg.png" alt="KENT" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Luminous_logo.svg/1280px-Luminous_logo.svg.png" alt="Luminous" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Usha_International_logo.svg/1280px-Usha_International_logo.svg.png" alt="Usha" />
-      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Intex_Technologies_logo.svg/1280px-Intex_Technologies_logo.svg.png" alt="Intex" />
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Samsung';">
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Voltas-Logo-PNG.png" alt="Voltas" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Voltas';">
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Blue_Star_primary_logo.png" alt="Blue Star" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Blue+Star';">
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/LG_logo_%282014%29.svg/600px-LG_logo_%282014%29.svg.png?20231109111316" alt="LG" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=LG';">
+      <img class="slide-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo7iwJzotLvyhmjK1QGW7HJLX68E5i0vD2tg&s" alt="Whirlpool" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Whirlpool';">
+      <img class="slide-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLi8K6tLLx0d2X3Ev22W903FtycfmVam6qtA&s" alt="Bajaj" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Bajaj';">
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/240px-Xiaomi_logo_%282021-%29.svg.png" alt="Xiaomi" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Xiaomi';">
+      <img class="slide-item" src="https://static.wikia.nocookie.net/logopedia/images/4/43/Morphy_Richards_2022_%28stacked%29.svg/revision/latest?cb=20220408213300" alt="Morphy Richards" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Morphy+R';">
+      <img class="slide-item" src="https://images.deccanchronicle.com/dc-Cover-uh27gp28c3p9bb7ol7v9m93lh4-20180918004821.Medi.jpeg" alt="KENT" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=KENT';">
+      <img class="slide-item" src="https://cdn.freelogovectors.net/wp-content/uploads/2023/12/luminous-logo-freelogovectors.net_.png" alt="Luminous" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Luminous';">
+      <img class="slide-item" src="https://www.driverlogistics.in/_next/image?url=https%3A%2F%2Fd1bpnn2a5id540.cloudfront.net%2F1691473136221%2F36fbb9f0-5f60-11ee-9f4c-97a9da22a67a.png&w=512&q=75" alt="Usha" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Usha';">
+      <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Intex_Technologies_logo.svg/2560px-Intex_Technologies_logo.svg.png" alt="Intex" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Intex';">
     </div>
   </div>
 
   <section id="home">
     <h2>Your Trusted Home Appliance Destination</h2>
     <p class="section-subtitle">Bringing comfort and convenience to homes across Jammu with the latest electronics from top brands.</p>
-    <img src="https://images.unsplash.com/photo-1615529328327-48d3f47a3844?q=80&w=1974&auto=format&fit=crop" alt="A modern living room with a large TV and appliances" style="width: 100%; max-width: 900px; border-radius: 10px; margin-top: 20px;">
+    <img src="https://www.shutterstock.com/image-photo/set-home-kitchen-appliances-room-600nw-2473408983.jpg" alt="A collection of home and kitchen appliances" style="width: 100%; max-width: 900px; border-radius: 10px; margin-top: 20px;" onerror="this.onerror=null;this.src='https://placehold.co/900x500/007bff/white?text=Modern+Appliances';">
   </section>
   
-  <!-- MODIFIED: Products section with updated categories and images -->
+  <!-- UPDATED: Products section with latest user-provided images -->
   <section id="products">
     <h2>Our Products</h2>
     <p class="section-subtitle">We are authorized dealers for a wide range of home appliances. Explore our popular categories below.</p>
     <div class="product-grid">
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1601643157091-ce5c665179ab?q=80&w=2070&auto=format&fit=crop" alt="Televisions" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=Televisions';">
+        <img src="https://es.web.img3.acsta.net/r_654_368/img/13/e0/13e07d7293d96044c40497d4089f80a0.png" alt="Televisions" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=Televisions';">
         <div class="product-card-content">
           <h3>Televisions</h3>
           <p>Experience breathtaking picture quality with our range of LED, QLED, and 4K Smart TVs.</p>
         </div>
       </div>
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1571175443880-49e1d25b2d6c?q=80&w=1974&auto=format&fit=crop" alt="Refrigerators" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=Refrigerators';">
+        <img src="https://media.istockphoto.com/id/1399160717/photo/refrigerator-standing-in-empty-room-free-copy-space-for-text-or-other-objects-household.jpg?s=612x612&w=0&k=20&c=U9H5GlhjPKbCuNRaOpO1T2H3vbnexjonA2RR-FSf_84=" alt="Refrigerators" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=Refrigerators';">
         <div class="product-card-content">
           <h3>Refrigerators</h3>
           <p>Keep your food fresh with our energy-efficient single and double-door models.</p>
         </div>
       </div>
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1626806819282-2c1dc01694e8?q=80&w=1974&auto=format&fit=crop" alt="Washing Machines" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=Washing+Machines';">
+        <img src="https://aws-obg-image-lb-4.tcl.com/content/dam/brandsite/region/in/blog/pc/detail/blog-march/washing-machine-dimensions/banner.jpg" alt="Washing Machines" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=Washing+Machines';">
         <div class="product-card-content">
           <h3>Washing Machines</h3>
           <p>Discover our top-load and front-load washing machines for a perfect clean.</p>
         </div>
       </div>
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1568498832327-b5883a6a1251?q=80&w=2070&auto=format&fit=crop" alt="Air Conditioners" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=ACs';">
+        <img src="https://www.livemint.com/lm-img/img/2025/06/18/600x338/best_AC_1750254470814_1750254480053.jpg" alt="Air Conditioners" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=ACs';">
         <div class="product-card-content">
           <h3>Air Conditioners</h3>
           <p>Stay cool with our powerful and efficient split and window AC units.</p>
         </div>
       </div>
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=2071&auto=format&fit=crop" alt="Home & Kitchen Appliances" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=More';">
+        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=2071&auto=format&fit=crop" alt="Home & Kitchen Appliances" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=More+Appliances';">
         <div class="product-card-content">
           <h3>Home & Kitchen Appliances</h3>
           <p>Microwaves, water filters, inverters, fans, heaters, and much more.</p>
@@ -363,7 +443,7 @@
     </div>
   </section>
 
-  <!-- NEW: Why Choose Us Section -->
+  <!-- Why Choose Us Section -->
   <section id="why-us">
     <h2>Why Choose Us?</h2>
     <p class="section-subtitle">We are more than just an electronics store. We are your partners in building a better home.</p>
@@ -391,22 +471,42 @@
     <p class="section-subtitle">Since our establishment, DEE KAY ELECTRONICS has been a cornerstone of the Jammu community for all electronic needs. We are dedicated to providing high-quality home appliances, ensuring top-notch service and ultimate customer satisfaction every time. Our commitment is to bring the best technology and convenience to your doorstep.</p>
   </section>
 
+  <!-- Upgraded Contact Section with a Form -->
   <section id="contact">
     <h2>Contact Us</h2>
-    <p class="section-subtitle">Have questions? We're here to help! Reach out to us via phone, email, or visit us in-store.</p>
-    <p><strong>Phone:</strong> <a href="tel:+919906320240">+91 99063 20240</a></p>
-    <p><strong>Email:</strong> <a href="mailto:info@deekayelectronics.com">info@deekayelectronics.com</a></p>
-    <p><strong>Address:</strong> Srinagar, Jammu and Kashmir, India</p>
+    <p class="section-subtitle">Have questions? We're here to help! Fill out the form below, reach out to us via phone, or visit us in-store.</p>
+    
+    <form id="contact-form">
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+
+    <p style="margin-top: 30px;">
+        <strong>Phone:</strong> <a href="tel:+919906320240">+91 99063 20240</a> | 
+        <strong>Address:</strong> Srinagar, Jammu and Kashmir, India
+    </p>
   </section>
 
+  <!-- Upgraded Footer with Icons -->
   <footer>
     <p>&copy; 2024 DEE KAY ELECTRONICS. All Rights Reserved.</p>
-    <p>
-      Follow us on
-      <a href="https://facebook.com" target="_blank">Facebook</a>,
-      <a href="https://instagram.com" target="_blank">Instagram</a>,
-      <a href="https://twitter.com" target="_blank">Twitter</a>
-    </p>
+    <p>Follow us on</p>
+    <div class="footer-socials">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    </div>
   </footer>
 
   <!-- Fixed WhatsApp & Call Buttons -->
@@ -418,5 +518,63 @@
       <i class="fas fa-phone"></i>
     </a>
   </div>
+
+  <!-- JavaScript for dynamic features -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // --- Intersection Observer for scroll animations ---
+        const animatedElements = document.querySelectorAll('.product-card, .feature-item');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+
+        // --- Active navigation link on scroll ---
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) { 
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // --- Prevent contact form submission (for demo purposes) ---
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitButton = this.querySelector('.submit-btn');
+            submitButton.textContent = 'Message Sent!';
+            setTimeout(() => {
+                submitButton.textContent = 'Send Message';
+                contactForm.reset();
+            }, 2000);
+        });
+
+    });
+  </script>
 </body>
 </html>
