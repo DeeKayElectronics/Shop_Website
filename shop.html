@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DEE KAY ELECTRONICS - Home Appliances & Electronics in Jammu</title>
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Your trusted, authorized dealer in Jammu for top brands of home and kitchen appliances including TVs, refrigerators, ACs, and more.">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        /* --- General Styling & Welcome Overlay --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Roboto", sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+            /* Initially hide overflow until welcome screen is dismissed */
+            overflow: hidden;
+        }
+
+        /* --- Welcome Screen (from index.html) --- */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='%23444' fill-opacity='0.1'%3E%3Cpath d='M0 0h10v10H0zM10 10h10v10H10zM20 0h10v10H20zM30 10h10v10H30zM0 20h10v10H0zM10 30h10v10H10zM20 20h10v10H20zM30 30h10v10H30z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+            background-blend-mode: overlay;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001; /* Highest z-index */
+            color: white;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.7s ease, visibility 0.7s ease;
+        }
+
+        .welcome-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .welcome-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+            animation: fadeIn 2s ease-in;
+            max-width: 90%;
+            box-sizing: border-box;
+        }
+
+        .welcome-box h1 {
+            font-family: "Orbitron", sans-serif;
+            font-size: 3rem;
+            color: #00ffff;
+            margin-bottom: 20px;
+        }
+
+        .welcome-box p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .enter-btn {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 30px;
+            background: #00ffff;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .enter-btn:hover {
+            background: #fff;
+            color: #007a7a;
+            box-shadow: 0 0 20px #00ffff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Main Content Styling (from main1.html) --- */
+        .main-content {
+             visibility: hidden; /* Hide main content until welcome is dismissed */
+        }
+        
+        .main-content.visible {
+            visibility: visible;
+        }
+
+        header {
+            background: linear-gradient(90deg, #007bff, #00c6ff);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: "Orbitron", sans-serif;
+            font-size: 2rem;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover, nav a.active {
+            color: #ffeb3b;
+            border-bottom: 2px solid #ffeb3b;
+        }
+        
+        section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        section:nth-of-type(odd) {
+            background-color: #ffffff;
+        }
+
+        section h2 {
+            font-family: "Orbitron", sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        section .section-subtitle {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .brand-slider { background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); padding: 30px 0; overflow: hidden; white-space: nowrap; position: relative; }
+        .brand-slider::before, .brand-slider::after { content: ""; position: absolute; top: 0; width: 150px; height: 100%; z-index: 2; }
+        .brand-slider::before { left: 0; background: linear-gradient(to right, white, rgba(255,255,255,0)); }
+        .brand-slider::after { right: 0; background: linear-gradient(to left, white, rgba(255,255,255,0)); }
+        .brand-track { display: flex; align-items: center; width: fit-content; animation: slide 60s linear infinite; }
+        .brand-track:hover { animation-play-state: paused; }
+        .brand-slider .slide-item { height: 50px; margin: 0 40px; filter: grayscale(100%); opacity: 0.8; transition: all 0.3s ease; }
+        .brand-slider .slide-item:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.1); }
+        @keyframes slide { from { transform: translateX(0%); } to { transform: translateX(-50%); } }
+
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; padding: 0 20px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .product-card { background: #fff; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); overflow: hidden; text-align: left; display: flex; flex-direction: column; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .product-card.visible { opacity: 1; transform: translateY(0); }
+        .product-card:hover { transform: translateY(-10px) !important; box-shadow: 0 8px 25px rgba(0,123,255,0.15); }
+        .product-card img { width: 100%; height: 220px; object-fit: cover; background-color: #eee; }
+        .product-card-content { padding: 20px; flex-grow: 1; }
+        .product-card h3 { margin-top: 0; font-size: 1.4rem; color: #333; }
+        .product-card p { font-size: 0.95rem; color: #666; margin-bottom: 0; }
+        
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 40px auto 0; }
+        .feature-item { background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .feature-item.visible { opacity: 1; transform: translateY(0); }
+        .feature-item .fas { font-size: 2.5rem; color: #007bff; margin-bottom: 15px; }
+        .feature-item h3 { font-size: 1.3rem; margin-bottom: 10px; }
+
+        .contact-container { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 700px; margin: 30px auto 0; text-align: left; align-items: start; }
+        #contact-form { width: 100%; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; font-size: 1rem; font-family: 'Roboto', sans-serif; transition: border-color 0.3s, box-shadow 0.3s; box-sizing: border-box; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #007bff; box-shadow: 0 0 8px rgba(0,123,255,0.2); }
+        .submit-btn { display: block; width: 100%; padding: 15px; font-size: 1.1rem; font-weight: bold; color: #fff; background-color: #007bff; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s, transform 0.3s; }
+        .submit-btn:hover { background-color: #0056b3; transform: translateY(-2px); }
+        .map-container { width: 100%; height: 450px; border-radius: 10px; overflow: hidden; }
+        .map-container iframe { border:0; width: 100%; height: 100%; }
+        
+        footer { background: #333; color: #fff; text-align: center; padding: 40px 20px; margin-top: 20px; }
+        .footer-socials { margin-top: 15px; display: flex; justify-content: center; gap: 20px; }
+        .footer-socials a { color: #fff; font-size: 1.5rem; transition: color 0.3s ease, transform 0.3s ease; }
+        .footer-socials a:hover { color: #00c6ff; transform: scale(1.2); }
+
+        .fixed-buttons { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+        .fixed-buttons a { display: flex; align-items: center; justify-content: center; width: 55px; height: 55px; border-radius: 50%; color: white; font-size: 24px; text-decoration: none; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: transform 0.3s, box-shadow 0.3s; }
+        .fixed-buttons a:hover { transform: scale(1.1); box-shadow: 0 6px 12px rgba(0,0,0,0.3); }
+        .whatsapp-btn { background-color: #25D366; }
+        .call-btn { background-color: #007bff; }
+
+        /* --- Media Queries --- */
+        @media (max-width: 900px) {
+            .contact-container { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .welcome-box { padding: 30px; margin: 20px; width: calc(100% - 40px); min-width: 280px; }
+            .welcome-box h1 { font-size: 2rem; }
+            .welcome-box p { font-size: 1rem; margin-bottom: 30px; }
+            .enter-btn { padding: 10px 25px; font-size: 1rem; }
+            nav a { margin: 0 8px; }
+        }
+        @media (max-width: 400px) {
+            .welcome-box h1 { font-size: 1.5rem; }
+            .welcome-box p { font-size: 0.9rem; }
+            header h1 { font-size: 1.5rem; }
+            section h2 { font-size: 2rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Welcome screen overlay -->
+    <div class="welcome-overlay" id="welcome-screen">
+        <div class="welcome-box">
+            <h1>Welcome to DEE KAY ELECTRONICS</h1>
+            <p>Your One-Stop Destination for the Latest Tech & Home Appliances in Jammu</p>
+            <button class="enter-btn" id="enter-store-btn">Enter Store</button>
+        </div>
+    </div>
+
+    <!-- Main page content -->
+    <div class="main-content" id="main-content">
+        <header>
+            <h1>DEE KAY ELECTRONICS</h1>
+            <nav>
+                <a href="#home" class="active">Home</a>
+                <a href="#products">Products</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#location">Location</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <div class="brand-slider">
+            <div class="brand-track">
+                <!-- Brands are duplicated for a seamless infinite loop -->
+                <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Samsung';">
+                <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Voltas-Logo-PNG.png" alt="Voltas" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Voltas';">
+                <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Blue_Star_primary_logo.png" alt="Blue Star" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Blue+Star';">
+                <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/LG_logo_%282014%29.svg/600px-LG_logo_%282014%29.svg.png" alt="LG" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=LG';">
+                <img class="slide-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo7iwJzotLvyhmjK1QGW7HJLX68E5i0vD2tg&s" alt="Whirlpool" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Whirlpool';">
+                <img class="slide-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLi8K6tLLx0d2X3Ev22W903FtycfmVam6qtA&s" alt="Bajaj" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Bajaj';">
+                <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/240px-Xiaomi_logo_%282021-%29.svg.png" alt="Xiaomi" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Xiaomi';">
+                <!-- Duplicate Set -->
+                <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Samsung';">
+                <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Voltas-Logo-PNG.png" alt="Voltas" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Voltas';">
+                <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Blue_Star_primary_logo.png" alt="Blue Star" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Blue+Star';">
+                <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/LG_logo_%282014%29.svg/600px-LG_logo_%282014%29.svg.png" alt="LG" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=LG';">
+                <img class="slide-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo7iwJzotLvyhmjK1QGW7HJLX68E5i0vD2tg&s" alt="Whirlpool" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Whirlpool';">
+                <img class="slide-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLi8K6tLLx0d2X3Ev22W903FtycfmVam6qtA&s" alt="Bajaj" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Bajaj';">
+                <img class="slide-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/240px-Xiaomi_logo_%282021-%29.svg.png" alt="Xiaomi" onerror="this.onerror=null;this.src='https://placehold.co/150x50/f0f0f0/000?text=Xiaomi';">
+            </div>
+        </div>
+        
+        <section id="home">
+             <h2>Your Trusted Home Appliance Destination</h2>
+             <p class="section-subtitle">Bringing comfort and convenience to homes across Jammu with the latest electronics from top brands.</p>
+             <img src="https://www.shutterstock.com/image-photo/set-home-kitchen-appliances-room-600nw-2473408983.jpg" alt="A collection of modern home and kitchen appliances" style="width: 100%; max-width: 900px; border-radius: 10px; margin-top: 20px;" onerror="this.onerror=null;this.src='https://placehold.co/900x500/007bff/white?text=Modern+Appliances';">
+        </section>
+        
+        <section id="products">
+            <h2>Our Products</h2>
+            <p class="section-subtitle">We are authorized dealers for a wide range of home appliances. Explore our popular categories below.</p>
+            <div class="product-grid">
+                <div class="product-card"><img src="https://es.web.img3.acsta.net/r_654_368/img/13/e0/13e07d7293d96044c40497d4089f80a0.png" alt="Televisions" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=Televisions';"><div class="product-card-content"><h3>Televisions</h3><p>Experience breathtaking picture quality with our range of LED, QLED, and 4K Smart TVs.</p></div></div>
+                <div class="product-card"><img src="https://media.istockphoto.com/id/1399160717/photo/refrigerator-standing-in-empty-room-free-copy-space-for-text-or-other-objects-household.jpg?s=612x612&w=0&k=20&c=U9H5GlhjPKbCuNRaOpO1T2H3vbnexjonA2RR-FSf_84=" alt="Refrigerators" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=Refrigerators';"><div class="product-card-content"><h3>Refrigerators</h3><p>Keep your food fresh with our energy-efficient single and double-door models.</p></div></div>
+                <div class="product-card"><img src="https://aws-obg-image-lb-4.tcl.com/content/dam/brandsite/region/in/blog/pc/detail/blog-march/washing-machine-dimensions/banner.jpg" alt="Washing Machines" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=Washing+Machines';"><div class="product-card-content"><h3>Washing Machines</h3><p>Discover our top-load and front-load washing machines for a perfect clean.</p></div></div>
+                <div class="product-card"><img src="https://www.livemint.com/lm-img/img/2025/06/18/600x338/best_AC_1750254470814_1750254480053.jpg" alt="Air Conditioners" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=ACs';"><div class="product-card-content"><h3>Air Conditioners</h3><p>Stay cool with our powerful and efficient split and window AC units.</p></div></div>
+                <div class="product-card"><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=2071&auto=format&fit=crop" alt="Home & Kitchen Appliances" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007bff/white?text=More+Appliances';"><div class="product-card-content"><h3>Home & Kitchen Appliances</h3><p>Microwaves, water filters, inverters, fans, heaters, and much more.</p></div></div>
+            </div>
+        </section>
+
+        <!-- NEW LOCATION SECTION -->
+        <section id="location">
+            <h2>Visit Our Store</h2>
+            <p class="section-subtitle">We are conveniently located in the heart of Jammu. Come and explore our wide range of products in person!</p>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d214958.0021350638!2d74.6737308433379!3d32.72111162461427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391e84a0ec32c0db%3A0xcb22d765393a11b0!2sJammu!5e0!3m2!1sen!2sin!4v1729267158739!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+
+        <section id="why-us">
+            <h2>Why Choose Us?</h2>
+            <p class="section-subtitle">We are more than just an electronics store. We are your partners in building a better home.</p>
+            <div class="features-grid">
+                <div class="feature-item"><i class="fas fa-medal"></i><h3>Authorized Dealers</h3><p>We only sell 100% genuine products from trusted brands with official warranties.</p></div>
+                <div class="feature-item"><i class="fas fa-tags"></i><h3>Competitive Pricing</h3><p>Get the best value for your money with our fair and transparent pricing.</p></div>
+                <div class="feature-item"><i class="fas fa-headset"></i><h3>Expert Guidance</h3><p>Our knowledgeable staff is here to help you choose the perfect appliance for your needs.</p></div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p class="section-subtitle">Since our establishment, DEE KAY ELECTRONICS has been a cornerstone of the Jammu community for all electronic needs. We are dedicated to providing high-quality home appliances, ensuring top-notch service and ultimate customer satisfaction every time. Our commitment is to bring the best technology and convenience to your doorstep.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p class="section-subtitle">Have questions? We're here to help! Fill out the form below or reach out to us via phone.</p>
+            <div class="contact-container">
+                <form id="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+                    <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" name="name" required></div>
+                    <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" required></div>
+                    <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" rows="5" required></textarea></div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+            <p style="margin-top: 30px;"><strong>Phone:</strong> <a href="tel:+919906320240">+91 99063 20240</a> | <strong>Address:</strong> Srinagar, Jammu and Kashmir, India</p>
+        </section>
+        
+        <footer>
+            <p>&copy; 2024 DEE KAY ELECTRONICS. All Rights Reserved.</p>
+            <p>Follow us on</p>
+            <div class="footer-socials">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </footer>
+
+        <div class="fixed-buttons">
+            <a href="https://wa.me/919906320240" class="whatsapp-btn" target="_blank" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="tel:+919906320240" class="call-btn" title="Call Us"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // --- NEW: Logic for the welcome screen ---
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const enterStoreBtn = document.getElementById('enter-store-btn');
+        const mainContent = document.getElementById('main-content');
+        
+        enterStoreBtn.addEventListener('click', () => {
+            // Add 'hidden' class to start the fade-out animation
+            welcomeScreen.classList.add('hidden');
+            // Make main content visible
+            mainContent.classList.add('visible');
+            // Allow the body to scroll again
+            document.body.style.overflow = 'auto';
+            
+            // Optional: after animation, remove the element so it doesn't interfere
+            setTimeout(() => {
+                welcomeScreen.style.display = 'none';
+            }, 700); // Should match the transition duration
+        });
+
+        // --- Intersection Observer for scroll animations ---
+        const animatedElements = document.querySelectorAll('.product-card, .feature-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        animatedElements.forEach(el => observer.observe(el));
+
+        // --- Active navigation link on scroll ---
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a');
+        window.addEventListener('scroll', () => {
+            let current = 'home'; // Default to home
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) { 
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                // Use querySelector to find the link whose href attribute ends with the current section id
+                if (link.getAttribute('href').endsWith(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // --- Formspree submission feedback ---
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            const submitButton = this.querySelector('.submit-btn');
+            setTimeout(() => {
+                 submitButton.textContent = 'Sending...';
+                 submitButton.disabled = true;
+            }, 100);
+        });
+
+    });
+    </script>
+</body>
+</html>
